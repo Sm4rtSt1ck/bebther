@@ -1,0 +1,32 @@
+<RCC>
+  <qresource prefix="wind">
+    <file>wind.png</file>
+  </qresource>
+  <qresource prefix="Cock">
+    <file>images.jpg</file>
+  </qresource>
+  <qresource prefix="window background">
+    <file>image.jpg</file>
+  </qresource>
+  <qresource prefix="sunset">
+    <file>sunset.png</file>
+  </qresource>
+  <qresource prefix="night">
+    <file>night-mode.png</file>
+  </qresource>
+  <qresource prefix="sunrise">
+    <file>sunrise.png</file>
+  </qresource>
+  <qresource prefix="day">
+    <file>sunny.png</file>
+  </qresource>
+  <qresource prefix="UV">
+    <file>ultraviolet.png</file>
+  </qresource>
+  <qresource prefix="humidity">
+    <file>drop.png</file>
+  </qresource>
+  <qresource prefix="pressure">
+    <file>barometer.png</file>
+  </qresource>
+</RCC>

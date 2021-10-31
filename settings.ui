@@ -247,6 +247,31 @@ padding:10px;</string>
      <string>◄</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>300</y>
+      <width>421</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Irkutsk</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>New York</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bebra City</string>
+     </property>
+    </item>
+   </widget>
   </widget>
  </widget>
  <resources/>

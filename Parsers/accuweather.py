@@ -1,4 +1,4 @@
-import baseParser
+import Parsers.baseParser as baseParser
 import requests
 import json
 import datetime
@@ -16,17 +16,17 @@ class Parser(baseParser.Parser):
 
     def getData(location_key="292712"):
         response = requests.get(
-            url="https://dataservice.accuweather.com/currentconditions" +
-            f"/v1/{location_key}?apikey={Parser.apikey}" +
-            "&metric=true&details=true"
+            url="https://dataservice.accuweather.com/currentconditions"
+            + f"/v1/{location_key}?apikey={Parser.apikey}"
+            + "&metric=true&details=true"
         )
         if response.status_code != 200:
             return None
         response = json.loads(response.content)
         forecast_response = requests.get(
-            url="http://dataservice.accuweather.com/forecasts/v1/daily" +
-            f"/1day/{location_key}?apikey={Parser.apikey}" +
-            "&metric=true&details=true"
+            url="http://dataservice.accuweather.com/forecasts/v1/daily"
+            + f"/1day/{location_key}?apikey={Parser.apikey}"
+            + "&metric=true&details=true"
         )
         print(forecast_response.url)
         data = dict()

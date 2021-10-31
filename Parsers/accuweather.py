@@ -1,4 +1,4 @@
-import Parsers.baseParser
+import Parsers.baseParser as baseParser
 import requests
 import json
 import datetime
@@ -31,10 +31,7 @@ class Parser(baseParser.Parser):
         print(forecast_response.url)
         data = dict()
         if forecast_response.status_code != 200:
-            data["DayTemperature"] = None
-            data["NightTemperature"] = None
-            data["SunriseTime"] = None
-            data["SunsetTime"] = None
+            return None
         else:
             forecase_response = json.loads(forecast_response.content)
             data["SunriseTime"] = (

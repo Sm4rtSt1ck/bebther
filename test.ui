@@ -372,7 +372,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>wind.png</pixmap>
+     <pixmap>images/wind.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -388,7 +388,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>barometer.png</pixmap>
+     <pixmap>images/barometer.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -404,7 +404,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>drop.png</pixmap>
+     <pixmap>images/drop.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -420,7 +420,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>ultraviolet.png</pixmap>
+     <pixmap>images/ultraviolet.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="l_wind_speed_2">
@@ -464,7 +464,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>sunny.png</pixmap>
+     <pixmap>images/sunny.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="l_wind_speed_3">
@@ -508,7 +508,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>night-mode.png</pixmap>
+     <pixmap>images/night-mode.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="l_wind_speed_4">
@@ -552,7 +552,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>sunrise.png</pixmap>
+     <pixmap>images/sunrise.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -568,7 +568,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>sunset.png</pixmap>
+     <pixmap>images/sunset.png</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="setting_button_4">
@@ -614,7 +614,7 @@ padding:10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>image.jpg</pixmap>
+     <pixmap>images/background.jpg</pixmap>
     </property>
    </widget>
    <zorder>label_14</zorder>

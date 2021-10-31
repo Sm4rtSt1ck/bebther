@@ -1,4 +1,4 @@
-import baseParser
+import Parsers.baseParser
 import requests
 import json
 import datetime

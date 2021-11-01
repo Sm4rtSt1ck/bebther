@@ -1,5 +1,6 @@
 import sys
-import Parsers.accuweather as AccuWeather
+from os import walk
+import Parsers
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -7,24 +8,54 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 isDebug = True
 # References if the debug mode is enabled.
 # Controls some behavior such as debug-outputs
+currentParser = None
+parsers = list()
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.fetchParsers()
+        global parsers
+        global currentParser
+        if len(parsers) > 0:
+            currentParser = parsers[0]
+        self.updateData()
         self.load_main()
-    
+
     def load_main(self):
         uic.loadUi("main.ui", self)
         self.setting_button.clicked.connect(self.load_settings)
-    
+
     def load_settings(self):
         uic.loadUi("settings.ui", self)
         self.main_button.clicked.connect(self.load_main)
         self.autorun_on.clicked.connect(Settings.autorun_on)
 
-    def updateData(self):
-        data = AccuWeather.Parser.getData()
+    def fetchParsers(self) -> None:
+        files = list()
+        for(dirpath, dirname, filenames) in walk("./Parsers/"):
+            files.append(filenames)
+            break
+        print(*files)
+        filenames.remove("baseParser.py")
+        result = list()
+        for i in filenames:
+            if i.endswith("Parser.py"):
+                result.append(getattr(__import__(
+                    f"Parsers.{i.replace('.py', '')}",
+                    fromlist=["Parser"]), "Parser"))
+            else:
+                filenames.remove(i)
+        global parsers
+        parsers = result
+
+    def updateData(self) -> None:
+        global currentParser
+        if currentParser is None:
+            return None
+        data = currentParser.getData()
+        print(*data if data is not None else "NO WEATHER")
         if data is not None:
             self.l_temp.setText(
                 f"{'+' if data['Temperature'] > 0 else ''}"
@@ -46,6 +77,7 @@ class MainWindow(QMainWindow):
             self.l_sunset.setText(f"{data['SunsetTime']}")
             print(data["Temperature"])
 
+
 class Settings:
     def autorun_on(self):
         pass
@@ -58,7 +90,6 @@ class Settings:
 
     def theme_dark(self):
         pass
-
 
 
 if __name__ == "__main__":

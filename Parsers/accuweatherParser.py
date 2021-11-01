@@ -14,7 +14,7 @@ class Parser(baseParser.Parser):
     # QxpQIeCf2j0G5iVl043GHXgBCxIP5Iry
     # 2LkBQzbEiYQyUvlWEfSqjg0GSsLERr4c
 
-    def getData(location_key="292712"):
+    def getData(location_key="292712") -> list:
         response = requests.get(
             url="https://dataservice.accuweather.com/currentconditions"
             + f"/v1/{location_key}?apikey={Parser.apikey}"

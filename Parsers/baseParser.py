@@ -19,5 +19,5 @@ class Parser:
     description = "this is an empty parser"
     URL = "https://lyceum.yandex.ru"
 
-    def getData(location_key="292712"):
+    def getData(location_key="292712") -> list:
         pass

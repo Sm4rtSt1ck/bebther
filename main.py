@@ -23,7 +23,7 @@ class MyWidget(QMainWindow):
             currentParser = parsers[0]
         self.updateData()
 
-    def fetchParsers(self):
+    def fetchParsers(self) -> None:
         files = list()
         for(dirpath, dirname, filenames) in walk("./Parsers/"):
             files.append(filenames)
@@ -41,7 +41,7 @@ class MyWidget(QMainWindow):
         global parsers
         parsers = result
 
-    def updateData(self):
+    def updateData(self) -> None:
         global currentParser
         if currentParser is None:
             return None

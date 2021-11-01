@@ -1,5 +1,6 @@
 import sys
-import Parsers.accuweather as AccuWeather
+from os import walk
+import Parsers
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -7,16 +8,42 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 isDebug = True
 # References if the debug mode is enabled.
 # Controls some behavior such as debug-outputs
+currentParser = None
+parsers = list()
 
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("test.ui", self)
+        self.fetchParsers()
+        global parsers
+        if len(parsers) > 0:
+            currentParser = parsers[0]
         self.updateData()
 
+    def fetchParsers(self):
+        files = list()
+        for(dirpath, dirname, filenames) in walk("./Parsers/"):
+            files.append(filenames)
+            break
+        print(*files)
+        filenames.remove("baseParser.py")
+        result = list()
+        for i in filenames:
+            if i.endswith("Parser.py"):
+                result.append(getattr(__import__(f"Parsers.{i.replace('.py', '')}", fromlist=["Parser"]), "Parser"))
+            else:
+                filenames.remove(i)
+        global parsers, currentParser
+        parsers = result
+
     def updateData(self):
-        data = AccuWeather.Parser.getData()
+        global currentParser
+        if currentParser is None:
+            return None
+        data = currentParser.getData()
+        print(*data if data is not None else "NO WEATHER")
         if data is not None:
             self.l_temp.setText(
                 f"{'+' if data['Temperature'] > 0 else ''}"

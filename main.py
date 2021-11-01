@@ -32,7 +32,9 @@ class MyWidget(QMainWindow):
         result = list()
         for i in filenames:
             if i.endswith("Parser.py"):
-                result.append(getattr(__import__(f"Parsers.{i.replace('.py', '')}", fromlist=["Parser"]), "Parser"))
+                result.append(getattr(__import__(
+                    f"Parsers.{i.replace('.py', '')}",
+                    fromlist=["Parser"]), "Parser"))
             else:
                 filenames.remove(i)
         global parsers, currentParser

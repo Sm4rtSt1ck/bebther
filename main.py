@@ -1,5 +1,7 @@
 import sys
 from os import walk
+from types import CoroutineType
+from xml.etree.ElementTree import parse
 import Parsers
 
 from PyQt5 import uic
@@ -21,9 +23,19 @@ class MyWidget(QMainWindow):
         global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
+        self.setting_button_3.clicked.connect(self.toggleParser)
+        self.toggleParser()
         self.updateData()
 
-    def fetchParsers(self) -> None:
+    def toggleParser(self) -> None:
+        global parsers, currentParser
+        if parsers.index(currentParser) + 1 < len(parsers):
+            currentParser = parsers[parsers.index(currentParser) + 1]
+        else:
+            currentParser = parsers[0]
+        self.setting_button_3.setText(currentParser.name)
+
+    def fetchParsers(self):
         files = list()
         for(dirpath, dirname, filenames) in walk("./Parsers/"):
             files.append(filenames)
@@ -41,7 +53,7 @@ class MyWidget(QMainWindow):
         global parsers
         parsers = result
 
-    def updateData(self) -> None:
+    def updateData(self):
         global currentParser
         if currentParser is None:
             return None

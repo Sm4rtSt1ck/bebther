@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="cursor">
    <cursorShape>ArrowCursor</cursorShape>
   </property>
@@ -82,12 +94,12 @@ padding:10px;</string>
      <string>AccuWeather</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_12">
+   <widget class="QLabel" name="l_sunrise">
     <property name="geometry">
      <rect>
       <x>389</x>
       <y>379</y>
-      <width>47</width>
+      <width>111</width>
       <height>37</height>
      </rect>
     </property>
@@ -107,12 +119,12 @@ padding:10px;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;6:00&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_20">
+   <widget class="QLabel" name="l_pressure">
     <property name="geometry">
      <rect>
       <x>263</x>
       <y>243</y>
-      <width>42</width>
+      <width>91</width>
       <height>46</height>
      </rect>
     </property>
@@ -137,7 +149,7 @@ padding:10px;</string>
      <rect>
       <x>263</x>
       <y>161</y>
-      <width>59</width>
+      <width>91</width>
       <height>46</height>
      </rect>
     </property>
@@ -160,7 +172,7 @@ padding:10px;</string>
      <string>007%</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="l_temp">
     <property name="geometry">
      <rect>
       <x>328</x>
@@ -181,18 +193,18 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>+22°</string>
+     <string>2.2°</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_13">
+   <widget class="QLabel" name="l_sunset">
     <property name="geometry">
      <rect>
       <x>546</x>
       <y>376</y>
-      <width>50</width>
+      <width>111</width>
       <height>40</height>
      </rect>
     </property>
@@ -248,7 +260,7 @@ padding:10px;</string>
      <rect>
       <x>262</x>
       <y>323</y>
-      <width>47</width>
+      <width>111</width>
       <height>46</height>
      </rect>
     </property>
@@ -423,12 +435,12 @@ padding:10px;</string>
      <pixmap>images/ultraviolet.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_wind_speed_2">
+   <widget class="QLabel" name="l_uv_index">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>576</x>
       <y>164</y>
-      <width>47</width>
+      <width>81</width>
       <height>46</height>
      </rect>
     </property>
@@ -467,12 +479,12 @@ padding:10px;</string>
      <pixmap>images/sunny.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_wind_speed_3">
+   <widget class="QLabel" name="l_day_temp">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>576</x>
       <y>240</y>
-      <width>47</width>
+      <width>81</width>
       <height>46</height>
      </rect>
     </property>
@@ -511,12 +523,12 @@ padding:10px;</string>
      <pixmap>images/night-mode.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_wind_speed_4">
+   <widget class="QLabel" name="l_night_temp">
     <property name="geometry">
      <rect>
-      <x>608</x>
+      <x>584</x>
       <y>320</y>
-      <width>47</width>
+      <width>71</width>
       <height>46</height>
      </rect>
     </property>
@@ -620,22 +632,22 @@ padding:10px;</string>
    <zorder>label_14</zorder>
    <zorder>setting_button</zorder>
    <zorder>setting_button_3</zorder>
-   <zorder>label_12</zorder>
-   <zorder>label_20</zorder>
+   <zorder>l_sunrise</zorder>
+   <zorder>l_pressure</zorder>
    <zorder>l_humidity</zorder>
-   <zorder>label_13</zorder>
+   <zorder>l_sunset</zorder>
    <zorder>label_3</zorder>
    <zorder>l_wind_speed</zorder>
-   <zorder>label</zorder>
+   <zorder>l_temp</zorder>
    <zorder>label_4</zorder>
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
    <zorder>label_7</zorder>
-   <zorder>l_wind_speed_2</zorder>
+   <zorder>l_uv_index</zorder>
    <zorder>label_8</zorder>
-   <zorder>l_wind_speed_3</zorder>
+   <zorder>l_day_temp</zorder>
    <zorder>label_9</zorder>
-   <zorder>l_wind_speed_4</zorder>
+   <zorder>l_night_temp</zorder>
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
    <zorder>setting_button_4</zorder>

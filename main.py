@@ -18,6 +18,7 @@ class MyWidget(QMainWindow):
         uic.loadUi("test.ui", self)
         self.fetchParsers()
         global parsers
+        global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
         self.updateData()
@@ -37,7 +38,7 @@ class MyWidget(QMainWindow):
                     fromlist=["Parser"]), "Parser"))
             else:
                 filenames.remove(i)
-        global parsers, currentParser
+        global parsers
         parsers = result
 
     def updateData(self):

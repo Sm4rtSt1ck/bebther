@@ -4,7 +4,7 @@ import json
 import datetime
 
 
-class currentParser(baseParser.Parser):
+class Parser(baseParser.Parser):
     name = "AccuWeather"
     description = "AccuWeather has local and international weather forecasts\
          from the most accurate weather forecasting technology\
@@ -17,7 +17,7 @@ class currentParser(baseParser.Parser):
     def getData(location_key="292712"):
         response = requests.get(
             url="https://dataservice.accuweather.com/currentconditions"
-            + f"/v1/{location_key}?apikey={currentParser.apikey}"
+            + f"/v1/{location_key}?apikey={Parser.apikey}"
             + "&metric=true&details=true"
         )
         if response.status_code != 200:
@@ -25,7 +25,7 @@ class currentParser(baseParser.Parser):
         response = json.loads(response.content)
         forecast_response = requests.get(
             url="http://dataservice.accuweather.com/forecasts/v1/daily"
-            + f"/1day/{location_key}?apikey={currentParser.apikey}"
+            + f"/1day/{location_key}?apikey={Parser.apikey}"
             + "&metric=true&details=true"
         )
         print(forecast_response.url)

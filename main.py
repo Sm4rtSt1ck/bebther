@@ -17,13 +17,13 @@ parsers = list()
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.updateData()
         self.load_main()
         self.fetchParsers()
         global parsers
         global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
+        self.updateData()
 
     def load_main(self):
         uic.loadUi("main.ui", self)

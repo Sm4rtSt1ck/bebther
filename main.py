@@ -4,6 +4,10 @@ from typing import MutableMapping
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+isDebug = True
+# References if the debug mode is enabled.
+# Controls some behavior such as debug-outputs
+
 
 class MainWindow(QMainWindow):
     def __init__(self):

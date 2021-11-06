@@ -4,6 +4,7 @@ from os import walk
 import pathlib
 import datetime
 import database
+import json
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -29,6 +30,8 @@ theme = windows["dark"]
 isAutorun = False
 # Current city string
 currentCity = "Иркутск"
+# Default city stored in settings
+defaultCity = "Иркутск"
 # Last parsed data
 last_data = None
 
@@ -51,6 +54,9 @@ class Windows(QMainWindow):
         # Connecting and initializing the database
         database.start()
         # Initial UI setup
+        self.readSettings()
+        global currentCity
+        currentCity = defaultCity
         self.updateParsers()
         global parsers
         global currentParser
@@ -73,6 +79,30 @@ class Windows(QMainWindow):
             currentParser = parsers[0]
         # Setting the weather source button's text
         self.setting_button_3.setText(currentParser.name)
+
+    def readSettings(self):
+        try:
+            data = json.loads(open("settings.json", "r").readline())
+            global defaultCity, theme, isAutorun
+            defaultCity = data["defaultCity"]
+            theme = data["theme"]
+            isAutorun = data["isAutorun"]
+            print(data["defaultCity"])
+        except Exception as e:
+            debug(f"Couldn't load settings: {e}")
+
+    def writeSettings(self):
+        try:
+            global defaultCity, theme, isAutorun
+            sfile = open("settings.json", "w")
+            settings = dict()
+            print(defaultCity)
+            settings["defaultCity"] = defaultCity
+            settings["theme"] = theme
+            settings["isAutorun"] = isAutorun
+            sfile.write(json.dumps(settings))
+        except Exception as e:
+            debug(f"Couldn't save settings: {e}")
 
     def updateParsers(self):
         """Updating list of available parsers"""
@@ -186,6 +216,7 @@ class Windows(QMainWindow):
 
             light() if self.theme_light.isChecked() else dark()
             buttons()
+            self.writeSettings()
 
         def changeHometown(index):
             pass
@@ -230,6 +261,7 @@ class Windows(QMainWindow):
                     pass
 
             on() if self.autorun_on.isChecked() else off()
+            self.writeSettings()
 
         def buttons():
             """Connects buttons to functions"""

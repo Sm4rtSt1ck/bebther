@@ -617,6 +617,38 @@ padding:10px;</string>
      <pixmap>images/background.jpg</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="l_share_icon">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>540</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/share.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="share_button">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>540</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>label_14</zorder>
    <zorder>setting_button</zorder>
    <zorder>setting_button_3</zorder>
@@ -639,6 +671,8 @@ padding:10px;</string>
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
    <zorder>setting_button_4</zorder>
+   <zorder>l_share_icon</zorder>
+   <zorder>share_button</zorder>
   </widget>
  </widget>
  <resources>

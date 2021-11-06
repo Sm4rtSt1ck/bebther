@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime, date
 import pathlib
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -33,7 +34,97 @@ class Windows(QMainWindow):
     def init_main(self):
         """Loads gui of main window and connects buttons to functions"""
         uic.loadUi(theme["main"], self)
-        self.setting_button.clicked.connect(self.init_settings)
+
+        def share():
+            """Opens picture with info about weather"""
+            from PIL import Image, ImageDraw, ImageFont
+            # Opens icons
+            clr = "_black" if theme == windows["light"] else ""
+            images = f"{directory}\\ui\\images\\highres"
+            humidity = Image.open(
+                f"{images}\\drop{clr}.png").resize((100, 100))
+            barometer = Image.open(
+                f"{images}\\barometer{clr}.png").resize((100, 100))
+            wind = Image.open(f"{images}\\wind{clr}.png").resize((100, 100))
+            ultraviolet = Image.open(
+                f"{images}\\ultraviolet{clr}.png").resize((100, 100))
+            day = Image.open(
+                f"{images}\\sunny{clr}.png").resize((100, 100))
+            night = Image.open(
+                f"{images}\\night-mode{clr}.png").resize((100, 100))
+            sunrise = Image.open(
+                f"{images}\\sunrise{clr}.png").resize((100, 100))
+            sunset = Image.open(
+                f"{images}\\sunset{clr}.png").resize(
+                    (100, 100)).convert("RGBA")
+            # Opens background
+            background = Image.open(
+                f"{directory}\\ui\\images\\\
+{'' if theme == windows['dark'] else 'light/'}"
+                + "share_background.jpeg").convert("RGBA")
+            txt = Image.new("RGBA", background.size, (255, 255, 255, 0))
+            font = ImageFont.truetype(
+                f"{directory}\\ui\\Bahnschrift.ttf", 63)
+            draw = ImageDraw.Draw(txt)
+            textColor = (
+                200, 200, 200, 255) if theme == windows["dark"] else (
+                    0, 0, 0, 200)
+            # Humidity
+            background.paste(humidity, (20, 20), humidity)
+            draw.text((150, 40), "007%", font=font, fill=textColor)
+            # Barometer
+            background.paste(barometer, (20, 175), barometer)
+            draw.text((150, 195), "228", font=font, fill=textColor)
+            # Wind
+            background.paste(wind, (20, 330), wind)
+            draw.text((150, 350), "1488", font=font, fill=textColor)
+            # Ultraviolet
+            background.paste(ultraviolet, (20, 485), ultraviolet)
+            draw.text((150, 505), "1488", font=font, fill=textColor)
+            # Day temp
+            background.paste(day, (330, 330), day)
+            draw.text((450, 350), "10°", font=font, fill=textColor)
+            # Night temp
+            background.paste(night, (630, 330), night)
+            draw.text((740, 350), "10°", font=font, fill=textColor)
+            # Sunrise time
+            background.paste(sunrise, (330, 485), sunrise)
+            draw.text((450, 505), "6:00", font=font, fill=textColor)
+            # Sunset time
+            background.paste(sunset, (630, 485), sunset)
+            draw.text((740, 505), "19:00", font=font, fill=textColor)
+            # Current time
+            time = datetime.now()
+            font = ImageFont.truetype(
+                f"{directory}\\ui\\Bahnschrift.ttf", 30)
+            draw.text(
+                (800, 20), time.time().strftime("%H:%M"),
+                font=font, fill=textColor)
+            font = ImageFont.truetype(
+                f"{directory}\\ui\\Bahnschrift.ttf", 200)
+            temp = 0
+            temp = f"{'+' if temp > 0 else ''}{temp}°"
+            draw.text(
+                (550 - len(str(temp)) * 30, 75), temp,
+                font=font, fill=textColor)
+
+            out = Image.alpha_composite(background, txt)
+            out.show()
+
+            humidity.close()
+            barometer.close()
+            wind.close()
+            ultraviolet.close()
+            day.close()
+            night.close()
+            sunrise.close()
+            sunset.close()
+            background.close()
+
+        def buttons():
+            self.setting_button.clicked.connect(self.init_settings)
+            self.share_button.clicked.connect(share)
+        buttons()
 
     # Settings window
     def init_settings(self):

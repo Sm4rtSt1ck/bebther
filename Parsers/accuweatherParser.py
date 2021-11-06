@@ -12,7 +12,7 @@ class Parser(baseParser.Parser):
          from the most accurate weather forecasting technology\
               featuring up to the minute weather reports."
     URL = "https://www.accuweather.com/"
-    apikey = "2LkBQzbEiYQyUvlWEfSqjg0GSsLERr4c"
+    apikey = "QxpQIeCf2j0G5iVl043GHXgBCxIP5Iry"
     # QxpQIeCf2j0G5iVl043GHXgBCxIP5Iry
     # 2LkBQzbEiYQyUvlWEfSqjg0GSsLERr4c
 

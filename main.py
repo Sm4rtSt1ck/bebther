@@ -1,7 +1,9 @@
 import sys
+import datetime
 from os import walk
 import pathlib
 import datetime
+import database
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -27,6 +29,8 @@ theme = windows["dark"]
 isAutorun = False
 # Current city string
 currentCity = "Иркутск"
+# Last parsed data
+last_data = dict()
 
 
 def debug(value):
@@ -44,7 +48,9 @@ class Windows(QMainWindow):
     def __init__(self):
         """UI Initialization"""
         super().__init__()
-        # Initial setup
+        # Connecting and initializing the database
+        database.start()
+        # Initial UI setup
         self.updateParsers()
         global parsers
         global currentParser
@@ -52,6 +58,7 @@ class Windows(QMainWindow):
             currentParser = parsers[0]
         self.init_main()
         self.updateData()
+        self.pushToDatabase()
 
     def updateCityName(self):
         """Update backend cityName variable from UI"""
@@ -91,7 +98,7 @@ class Windows(QMainWindow):
 
     def updateData(self):
         """Updating weather data using selected parser"""
-        global currentParser
+        global currentParser, last_data
         if currentParser is None:
             return None
         # Getting the parsed data
@@ -117,6 +124,25 @@ class Windows(QMainWindow):
             )
             self.l_sunrise.setText(f"{data['SunriseTime']}")
             self.l_sunset.setText(f"{data['SunsetTime']}")
+            last_data = data
+
+    def pushToDatabase(self) -> None:
+        """Writes current weather data to the database."""
+        global last_data, currentCity, currentParser
+        if last_data is None:
+            debug("last_data was None, couldn't write to the db")
+            return
+        data = last_data
+        data["Date"] = datetime.datetime.now().date()
+        data["City"] = currentCity
+        data["WeatherSource"] = currentParser.name
+        if database.db is None:
+            debug("WRITE: database does not exist")
+            return
+        try:
+            database.write(last_data)
+        except Exception as e:
+            debug(f"Couldn't write to the database: {e}")
 
     # Main window
     def init_main(self):

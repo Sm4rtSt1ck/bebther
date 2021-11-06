@@ -48,9 +48,9 @@ Feel free to share your parser in any possible way
 ## Used Materials
 ### Icons
 > All icons belong to [flaticon](https://flaticon.com)  
-![Barometer icon](ui\images\barometer.png) [Barometer](https://www.flaticon.com/free-icon/barometer_481430) by **Those Icons**  
-![Drop icon](ui\images\drop.png) [Drop](https://www.flaticon.com/free-icon/drop_606797) by **Good Ware**  
-![Night-mode icon](ui\images\night-mode.png) [Night-mode](https://www.flaticon.com/premium-icon/night-mode_2182323) by **rsetiawan**  
+![Barometer icon](ui/images/barometer.png) [Barometer](https://www.flaticon.com/free-icon/barometer_481430) by **Those Icons**  
+![Drop icon](ui/images/drop.png) [Drop](https://www.flaticon.com/free-icon/drop_606797) by **Good Ware**  
+![Night-mode icon](ui/images/night-mode.png) [Night-mode](https://www.flaticon.com/premium-icon/night-mode_2182323) by **rsetiawan**  
 ![Sunny icon](ui/images/sunny.png) [Sunny](https://www.flaticon.com/premium-icon/sunny_3222672) by **kosonicon**  
 ![Sunrise icon](ui/images/sunrise.png) [Sunrise](https://www.flaticon.com/premium-icon/sunrise_4398453) by **Secret Studio**  
 ![Sunset icon](ui/images/sunset.png) [Sunset](https://www.flaticon.com/free-icon/sunset_287668) by **Nikita Golubev**  

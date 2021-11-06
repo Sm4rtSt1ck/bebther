@@ -30,7 +30,7 @@ isAutorun = False
 # Current city string
 currentCity = "Иркутск"
 # Last parsed data
-last_data = dict()
+last_data = None
 
 
 def debug(value):
@@ -58,7 +58,6 @@ class Windows(QMainWindow):
             currentParser = parsers[0]
         self.init_main()
         self.updateData()
-        self.pushToDatabase()
 
     def updateCityName(self):
         """Update backend cityName variable from UI"""
@@ -96,14 +95,19 @@ class Windows(QMainWindow):
         global parsers
         parsers = result
 
-    def updateData(self):
-        """Updating weather data using selected parser"""
+    def getData(self) -> dict:
+        """Get data from current parser"""
         global currentParser, last_data
         if currentParser is None:
             return None
         # Getting the parsed data
         data = currentParser.getData(currentParser.getCity(currentCity))
         debug(data if data is not None else "NO WEATHER")
+        last_data = data
+        return data
+
+    def updateUI(self, data) -> None:
+        """Updating weather data"""
         if data is not None:
             self.l_temp.setText(
                 f"{'+' if data['Temperature'] > 0 else ''}"
@@ -124,7 +128,14 @@ class Windows(QMainWindow):
             )
             self.l_sunrise.setText(f"{data['SunriseTime']}")
             self.l_sunset.setText(f"{data['SunsetTime']}")
-            last_data = data
+
+    def updateData(self) -> None:
+        """Update data and UI values"""
+        data = self.getData()
+        if data is not None:
+            self.updateUI(data)
+        else:
+            debug("Error, no data.")
 
     def pushToDatabase(self) -> None:
         """Writes current weather data to the database."""
@@ -151,6 +162,8 @@ class Windows(QMainWindow):
         self.cityNameField.setPlainText(currentCity)
         self.cityNameField.textChanged.connect(self.updateCityName)
         self.setting_button.clicked.connect(self.init_settings)
+        global last_data
+        self.updateUI(last_data)
 
     # Settings window
     def init_settings(self):

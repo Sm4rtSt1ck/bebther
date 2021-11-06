@@ -1,5 +1,7 @@
 import sys
+import datetime
 from os import walk
+import database
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -9,16 +11,18 @@ isDebug = True
 # Controls some behavior such as debug-outputs
 currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers
+last_data = dict()
+currentCity = "Irkutsk"
 
 
 def debug(value):
     """Modified print method. Prints value if the debug mode is enabled"""
     if isDebug:
         if type(value) == list or type(value) == dict:
-            print("[DEBUG]: ", end='')
+            print(f"[DEBUG | {datetime.datetime.now()}]: ", end='')
             print(*value)
         else:
-            print(f"[DEBUG]: {value}")
+            print(f"[DEBUG | {datetime.datetime.now()}]: {value}")
 
 
 class MainWindow(QMainWindow):
@@ -27,7 +31,9 @@ class MainWindow(QMainWindow):
     def __init__(self):
         """UI Initialization"""
         super().__init__()
-        # Initial setup
+        # Connecting and initializing the database
+        database.start()
+        # Initial UI setup
         self.load_main()
         self.updateParsers()
         global parsers
@@ -35,6 +41,7 @@ class MainWindow(QMainWindow):
         if len(parsers) > 0:
             currentParser = parsers[0]
         self.updateData()
+        self.pushToDatabase()
 
     def load_main(self):
         """Loading main UI window and assigning buttons"""
@@ -81,7 +88,7 @@ class MainWindow(QMainWindow):
 
     def updateData(self):
         """Updating weather data using selected parser"""
-        global currentParser
+        global currentParser, last_data
         if currentParser is None:
             return None
         # Getting the parsed data
@@ -107,6 +114,25 @@ class MainWindow(QMainWindow):
             )
             self.l_sunrise.setText(f"{data['SunriseTime']}")
             self.l_sunset.setText(f"{data['SunsetTime']}")
+            last_data = data
+
+    def pushToDatabase(self) -> None:
+        """Writes current weather data to the database."""
+        global last_data, currentCity, currentParser
+        if last_data is None:
+            debug("last_data was None, couldn't write to the db")
+            return
+        data = last_data
+        data["Date"] = datetime.datetime.now().date()
+        data["City"] = currentCity
+        data["WeatherSource"] = currentParser.name
+        if database.db is None:
+            debug("WRITE: database does not exist")
+            return
+        try:
+            database.write(last_data)
+        except Exception as e:
+            debug(f"Couldn't write to the database: {e}")
 
 
 class Settings:

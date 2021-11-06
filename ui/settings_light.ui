@@ -23,11 +23,14 @@
       <height>600</height>
      </rect>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/background_settings.png</pixmap>
+     <pixmap>images/light/background_settings.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="theme_field">
@@ -48,9 +51,9 @@
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -72,8 +75,11 @@ padding:10px;</string>
       <pointsize>24</pointsize>
      </font>
     </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -99,7 +105,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -127,9 +133,9 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -154,9 +160,9 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -179,7 +185,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -205,7 +211,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -238,16 +244,16 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
      <string>◄</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="hometown_button">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -255,6 +261,31 @@ padding:10px;</string>
       <width>421</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <stylestrategy>PreferDefault</stylestrategy>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid white;
+border-color: rgb(200, 200, 255);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 255, 255);
+selection-color: rgb(255, 255, 255);
+selection-background-color: rgba(0, 0, 0, 50);
+padding:10px;</string>
     </property>
     <item>
      <property name="text">
@@ -277,7 +308,11 @@ padding:10px;</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="theme"/>
+  <buttongroup name="theme">
+   <property name="exclusive">
+    <bool>true</bool>
+   </property>
+  </buttongroup>
   <buttongroup name="autorun"/>
  </buttongroups>
 </ui>

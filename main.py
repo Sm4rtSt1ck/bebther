@@ -1,5 +1,7 @@
 import sys
 from os import walk
+import pathlib
+import datetime
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -9,6 +11,20 @@ isDebug = True
 # Controls some behavior such as debug-outputs
 currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers
+# Location of .ui files
+directory = pathlib.Path(__file__).parent.resolve()
+windows = {  # Windows
+    "dark": {  # Dark windows
+        "main": f"{directory}\\ui\\main.ui",
+        "settings": f"{directory}\\ui\\settings.ui"},
+    "light": {  # Light windows
+        "main": f"{directory}\\ui\\main_light.ui",
+        "settings": f"{directory}\\ui\\settings_light.ui"}}
+# Default theme
+theme = windows["dark"]
+# Autorun
+isAutorun = False
+# Location of this file
 
 
 def debug(value):
@@ -21,32 +37,19 @@ def debug(value):
             print(f"[DEBUG | {datetime.datetime.now()}]: {value}")
 
 
-class MainWindow(QMainWindow):
-    """Main program class.
-    Contains UI and workflow functions"""
+class Windows(QMainWindow):
+    """Windows functionality"""
     def __init__(self):
         """UI Initialization"""
         super().__init__()
         # Initial setup
-        self.load_main()
         self.updateParsers()
         global parsers
         global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
+        self.init_main()
         self.updateData()
-
-    def load_main(self):
-        """Loading main UI window and assigning buttons"""
-        uic.loadUi("main.ui", self)
-        self.setting_button.clicked.connect(self.load_settings)
-        self.setting_button_3.clicked.connect(self.toggleParser)
-
-    def load_settings(self):
-        """Loading settings windows and assigning buttons"""
-        uic.loadUi("settings.ui", self)
-        self.main_button.clicked.connect(self.load_main)
-        self.autorun_on.clicked.connect(Settings.autorun_on)
 
     def toggleParser(self) -> None:
         """Switching to the next available parser"""
@@ -108,31 +111,107 @@ class MainWindow(QMainWindow):
             self.l_sunrise.setText(f"{data['SunriseTime']}")
             self.l_sunset.setText(f"{data['SunsetTime']}")
 
+    # Main window
+    def init_main(self):
+        """Loads gui of main window and connects buttons to functions"""
+        uic.loadUi(theme["main"], self)
+        self.setting_button.clicked.connect(self.init_settings)
 
-class Settings:
-    """Settings UI window workflow"""
-    def autorun_on(self):
-        """Add the application to autorun"""
-        pass
+    # Settings window
+    def init_settings(self):
+        """Loads gui of settings window,
+        defines functions and connects buttons to them"""
+        uic.loadUi(theme["settings"], self)
 
-    def autorun_off(self):
-        """Remove the application from autorun"""
-        pass
+        def changeTheme():
+            def light():
+                """Switches theme to light"""
+                global theme
+                theme = windows["light"]
+                uic.loadUi(theme["settings"], self)
 
-    def theme_light(self):
-        """Switch UI to light color scheme"""
-        pass
+            def dark():
+                """Switches theme to dark"""
+                global theme
+                theme = windows["dark"]
+                uic.loadUi(theme["settings"], self)
 
-    def theme_dark(self):
-        """Switch UI to dark color scheme"""
-        pass
+            light() if self.theme_light.isChecked() else dark()
+            buttons()
 
+        def changeHometown(index):
+            pass
+
+        def autorun():
+            def on():
+                """Turns autorun on"""
+                global isAutorun
+                import winreg
+
+                keyVal = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+                registry = winreg.ConnectRegistry(
+                    None, winreg.HKEY_CURRENT_USER)
+
+                try:
+                    key = winreg.OpenKey(
+                        registry, keyVal, 0, winreg.KEY_ALL_ACCESS)
+                except OSError:
+                    key = winreg.CreateKey(winreg.registry, keyVal)
+
+                winreg.SetValueEx(
+                    key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.bat")
+                winreg.CloseKey(key)
+                isAutorun = True
+
+            def off():
+                """Turns autorun off"""
+                global isAutorun
+                import winreg
+
+                keyVal = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+                registry = winreg.ConnectRegistry(
+                    None, winreg.HKEY_CURRENT_USER)
+
+                try:
+                    key = winreg.OpenKey(
+                        registry, keyVal, 0, winreg.KEY_ALL_ACCESS)
+                    winreg.DeleteValue(key, "Bebther")
+                    winreg.CloseKey(key)
+                    isAutorun = False
+                except OSError:
+                    pass
+
+            on() if self.autorun_on.isChecked() else off()
+
+        def buttons():
+            """Connects buttons to functions"""
+            # Main menu button
+            self.main_button.clicked.connect(self.init_main)
+
+            # Theme buttons
+            self.theme_light.clicked.connect(changeTheme)
+            self.theme_dark.clicked.connect(changeTheme)
+            self.theme_light.setChecked(
+                True if theme == windows["light"] else False)
+            self.theme_dark.setChecked(
+                True if theme == windows["dark"] else False)
+
+            # Hometown combobox
+            self.hometown_button.currentIndexChanged.connect(changeHometown)
+
+            # Autorun buttons
+            self.autorun_on.clicked.connect(autorun)
+            self.autorun_off.clicked.connect(autorun)
+            self.autorun_on.setChecked(isAutorun)
+            self.autorun_off.setChecked(False if isAutorun else True)
+        buttons()
 
 # Program's entry point
 # Creating application and window instances
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    MainWindow = MainWindow()
+    MainWindow = Windows()
     MainWindow.show()
     sys.exit(app.exec_())

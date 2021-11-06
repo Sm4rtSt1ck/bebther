@@ -26,6 +26,9 @@
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -33,200 +36,57 @@
      <pixmap>images/light/background_settings.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="theme_field">
-    <property name="geometry">
-     <rect>
-      <x>22</x>
-      <y>133</y>
-      <width>861</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgb(200, 200, 255);
-background-color: none;
-color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Theme</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="theme_light">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>150</y>
-      <width>201</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Light</string>
-    </property>
-    <attribute name="buttonGroup">
-     <string notr="true">theme</string>
-    </attribute>
-   </widget>
-   <widget class="QRadioButton" name="theme_dark">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>150</y>
-      <width>201</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Dark</string>
-    </property>
-    <attribute name="buttonGroup">
-     <string notr="true">theme</string>
-    </attribute>
-   </widget>
-   <widget class="QLabel" name="hometown_field">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>280</y>
-      <width>861</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgb(200, 200, 255);
-background-color: none;
-color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Hometown</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="autorun_field">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>430</y>
-      <width>861</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgb(200, 200, 255);
-background-color: none;
-color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Autorun</string>
-    </property>
-   </widget>
    <widget class="QRadioButton" name="autorun_on">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>450</y>
-      <width>201</width>
+      <x>331</x>
+      <y>141</y>
+      <width>70</width>
       <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
+     <string notr="true">color: white;
 padding:10px;</string>
     </property>
     <property name="text">
      <string>On</string>
     </property>
-    <attribute name="buttonGroup">
-     <string notr="true">autorun</string>
-    </attribute>
    </widget>
-   <widget class="QRadioButton" name="autorun_off">
+   <widget class="QLabel" name="devname_7">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>450</y>
-      <width>201</width>
-      <height>61</height>
+      <x>61</x>
+      <y>471</y>
+      <width>375</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Bahnschrift SemiLight</family>
-      <pointsize>24</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-padding:10px;</string>
+     <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>Off</string>
+     <string>Vsevolod Levitan (@1ffycat / @Iffycat)</string>
     </property>
-    <attribute name="buttonGroup">
-     <string notr="true">autorun</string>
-    </attribute>
    </widget>
    <widget class="QPushButton" name="main_button">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>91</width>
+      <x>0</x>
+      <y>0</y>
+      <width>72</width>
       <height>71</height>
      </rect>
     </property>
@@ -243,28 +103,140 @@ padding:10px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgb(200, 200, 255);
+border-color: rgb(66, 79, 122);
 background-color: none;
-color: rgb(255, 255, 255);
+color: white;
 padding:10px;</string>
     </property>
     <property name="text">
      <string>◄</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="hometown_button">
+   <widget class="QRadioButton" name="autorun_off">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>300</y>
-      <width>421</width>
+      <x>511</x>
+      <y>141</y>
+      <width>73</width>
       <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>24</pointsize>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string>Off</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="autorun_field">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>72</y>
+      <width>262</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid;
+border-color: rgba(255, 255, 255, 50);
+background-color: none;
+padding:10px;
+color: white;</string>
+    </property>
+    <property name="text">
+     <string>Autorun</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="theme_light">
+    <property name="geometry">
+     <rect>
+      <x>41</x>
+      <y>141</y>
+      <width>90</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string>Light</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Contacts_field">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>405</y>
+      <width>850</width>
+      <height>173</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid;
+border-color: rgba(255, 255, 255, 50);
+background-color: none;
+color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string>Developers</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="hometown_button">
+    <property name="geometry">
+     <rect>
+      <x>618</x>
+      <y>141</y>
+      <width>244</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -280,11 +252,11 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(200, 200, 255);
+border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 0);
-color: rgb(255, 255, 255);
-selection-color: rgb(255, 255, 255);
+selection-color: rgb(200, 200, 255);
 selection-background-color: rgba(0, 0, 0, 50);
+color: white;
 padding:10px;</string>
     </property>
     <item>
@@ -303,16 +275,217 @@ padding:10px;</string>
      </property>
     </item>
    </widget>
+   <widget class="QRadioButton" name="theme_dark">
+    <property name="geometry">
+     <rect>
+      <x>191</x>
+      <y>141</y>
+      <width>88</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+padding:10px;
+text-align: right;</string>
+    </property>
+    <property name="text">
+     <string>Dark</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="devname_8">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>221</y>
+      <width>898</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>More coming soon...</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hometown_field">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>72</y>
+      <width>262</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid;
+border-color: rgba(255, 255, 255, 50);
+background-color: none;
+color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string>Hometown</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="theme_field">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>71</y>
+      <width>262</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid;
+border-color: rgba(255, 255, 255, 50);
+background-color: none;
+color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string>Theme</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="devname_10">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>471</y>
+      <width>233</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>made with Python &amp; Qt</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="devname_6">
+    <property name="geometry">
+     <rect>
+      <x>61</x>
+      <y>521</y>
+      <width>375</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Leonid Pashnin (@N4Rk0t1k)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="devname_9">
+    <property name="geometry">
+     <rect>
+      <x>611</x>
+      <y>521</y>
+      <width>233</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>for lyceum.yandex.ru</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>hometown_field</zorder>
+   <zorder>autorun_field</zorder>
+   <zorder>theme_field</zorder>
+   <zorder>autorun_on</zorder>
+   <zorder>devname_7</zorder>
+   <zorder>main_button</zorder>
+   <zorder>autorun_off</zorder>
+   <zorder>theme_light</zorder>
+   <zorder>Contacts_field</zorder>
+   <zorder>hometown_button</zorder>
+   <zorder>theme_dark</zorder>
+   <zorder>devname_8</zorder>
+   <zorder>devname_10</zorder>
+   <zorder>devname_6</zorder>
+   <zorder>devname_9</zorder>
   </widget>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="autorun"/>
   <buttongroup name="theme">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-  <buttongroup name="autorun"/>
  </buttongroups>
 </ui>

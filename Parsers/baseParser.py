@@ -24,3 +24,7 @@ class Parser:
     def getData(location_key="292712") -> dict:
         """Parse the data and return as a formatted dict"""
         pass
+
+    def getCity(cityName="Irkutsk") -> str:
+        """Get the city id from name"""
+        pass

@@ -67,10 +67,10 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
    <widget class="QPushButton" name="setting_button_3">
     <property name="geometry">
      <rect>
-      <x>735</x>
-      <y>10</y>
-      <width>158</width>
-      <height>48</height>
+      <x>679</x>
+      <y>8</y>
+      <width>215</width>
+      <height>59</height>
      </rect>
     </property>
     <property name="font">
@@ -583,36 +583,6 @@ padding:10px;</string>
      <pixmap>images/sunset.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="setting_button_4">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>10</y>
-      <width>158</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgb(66, 79, 122);
-background-color: none;
-color: rgb(200, 200, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>Irkutsk</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
@@ -627,6 +597,42 @@ padding:10px;</string>
     </property>
     <property name="pixmap">
      <pixmap>images/background.jpg</pixmap>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="cityNameField">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>10</y>
+      <width>215</width>
+      <height>59</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(200, 200, 255);
+padding: 10px;
+border: 1px solid white;
+border-color: rgb(66, 79, 122);
+border-radius: 15px;</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QPlainTextEdit::NoWrap</enum>
+    </property>
+    <property name="plainText">
+     <string>Иркутск</string>
     </property>
    </widget>
    <zorder>label_14</zorder>
@@ -650,7 +656,7 @@ padding:10px;</string>
    <zorder>l_night_temp</zorder>
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
-   <zorder>setting_button_4</zorder>
+   <zorder>cityNameField</zorder>
   </widget>
  </widget>
  <resources>

@@ -1,6 +1,9 @@
 /.VSCodeCounter/
 *.db
+<<<<<<< HEAD
 settings.json
+=======
+>>>>>>> Feature/Share
 
 *.pyc
 # Byte-compiled / optimized / DLL files
@@ -538,4 +541,8 @@ compile_commands.json
 *creator.user*
 
 *.pyc
+<<<<<<< HEAD
 __pycache__/
+=======
+__pycache__/
+>>>>>>> Feature/Share

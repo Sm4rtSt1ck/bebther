@@ -15,10 +15,10 @@ def debug(value):
     """Modified print method. Prints value if the debug mode is enabled"""
     if isDebug:
         if type(value) == list or type(value) == dict:
-            print("[DEBUG]: ", end='')
+            print(f"[DEBUG | {datetime.datetime.now()}]: ", end='')
             print(*value)
         else:
-            print(f"[DEBUG]: {value}")
+            print(f"[DEBUG | {datetime.datetime.now()}]: {value}")
 
 
 class MainWindow(QMainWindow):

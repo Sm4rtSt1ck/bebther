@@ -149,7 +149,7 @@ class Windows(QMainWindow):
                 f"{'+' if data['Temperature'] > 0 else ''}"
                 + f"{data['Temperature']}°"
             )
-            # Filling the parsed data into UI labels
+            # Filling parsed data into UI labels
             self.l_humidity.setText(f"{data['Humidity']}%")
             self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
             self.l_pressure.setText(f"{data['Pressure']}")
@@ -181,6 +181,7 @@ class Windows(QMainWindow):
         if last_data is None:
             debug("last_data was None, couldn't write to the db")
             return
+        # Formatting dict for database entry
         data = last_data
         data["Date"] = datetime.datetime.now().date()
         data["City"] = currentCity
@@ -203,7 +204,7 @@ class Windows(QMainWindow):
         self.reload_button.clicked.connect(self.updateData)
         self.setting_button_3.clicked.connect(self.toggleParser)
         global last_data
-        self.updateUI(last_data)
+        self.updateUI(last_data)  # Updating UI
 
     def changeHometown(self):
         """Change local entry of default city and save settings"""
@@ -243,19 +244,22 @@ class Windows(QMainWindow):
                 """Turns autorun on"""
                 global isAutorun
                 import winreg
-
                 keyVal = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+                # Connecting to the registry
                 registry = winreg.ConnectRegistry(
                     None, winreg.HKEY_CURRENT_USER)
 
+                # Writing to the registry key or creating a new one
                 try:
                     key = winreg.OpenKey(
                         registry, keyVal, 0, winreg.KEY_ALL_ACCESS)
                 except OSError:
                     key = winreg.CreateKey(winreg.registry, keyVal)
 
+                # Setting key value
                 winreg.SetValueEx(
                     key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.bat")
+                # Closing the registry
                 winreg.CloseKey(key)
                 isAutorun = True
 
@@ -264,10 +268,12 @@ class Windows(QMainWindow):
                 global isAutorun
                 import winreg
 
+                # Connecting to the registry
                 keyVal = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
                 registry = winreg.ConnectRegistry(
                     None, winreg.HKEY_CURRENT_USER)
 
+                # Removing the registry key
                 try:
                     key = winreg.OpenKey(
                         registry, keyVal, 0, winreg.KEY_ALL_ACCESS)

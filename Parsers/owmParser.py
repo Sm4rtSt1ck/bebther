@@ -15,6 +15,7 @@ class Parser:
     def getData(location_key="292712") -> dict:
         """Parse the data and return as a formatted dict"""
         result = dict()
+        # Sending request to get lon & lat
         rlk = requests.get(
             url="https://api.openweathermap.org/data/2.5/weather?"
             + f"q={location_key}&appid={Parser.apikey}&units=metric"
@@ -22,7 +23,9 @@ class Parser:
         if rlk.status_code != 200:
             debug("Couldn't get OWM data, SC != 200")
             return None
+        # Parsing JSON data format for lon/lat
         rlk = json.loads(rlk.content)["coord"]
+        # Sending request to get weather info
         response = requests.get(
             url="https://api.openweathermap.org/data/2.5/onecall?"
             + f"lat={rlk['lat']}&lon={rlk['lon']}&appid={Parser.apikey}"
@@ -30,7 +33,9 @@ class Parser:
         )
         if response.status_code != 200:
             debug("Couldn't get OWM2 data, SC != 200")
+        # Parsing JSON data format for weather
         response = json.loads(response.content)["current"]
+        # Filling in the dictionary
         result["Temperature"] = round(float(response["temp"]), 1)
         result["Humidity"] = response["humidity"]
         result["WindSpeed"] = response["wind_speed"]
@@ -40,12 +45,14 @@ class Parser:
             int(response["sunrise"])).time().strftime("%H:%M")
         result["SunsetTime"] = datetime.datetime.fromtimestamp(
             int(response["sunset"])).time().strftime("%H:%M")
+        # Sending request to get day/night temperatures
         response = requests.get(
             url="https://api.openweathermap.org/data/2.5/forecast?"
             + f"q={location_key}&appid={Parser.apikey}&units=metric"
         )
         if response.status_code != 200:
             debug("Couldn't get OWM3 data, SC != 200")
+        # Parsing JSON data format for day/night temperatures
         response = json.loads(response.content)["list"][0]["main"]
         result["DayTemperature"] = round(float(response["temp_max"]), 1)
         result["NightTemperature"] = round(float(response["temp_min"]), 1)
@@ -53,4 +60,5 @@ class Parser:
 
     def getCity(cityName="Irkutsk") -> str:
         """Get the city id from name"""
-        return cityName  # As simple as that, ty OWM :)
+        # OWM doesn't need any ID, only city name is needed
+        return cityName

@@ -46,7 +46,13 @@
 border-color: rgba(50, 50, 150, 100);
 background-color: none;
 color: rgb(255, 255, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+font: 75 15pt &quot;Comic Sans MS&quot;;
+border-radius: 20px;
+border: 1px solid white;
+border-color: rgba(255, 255, 255, 50);
+background-color: rgba(0, 0, 0, 20);
+color: rgb(255, 255, 255);
+padding:8px;</string>
     </property>
     <property name="text">
      <string>⚙</string>
@@ -74,7 +80,7 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
-background-color: none;
+background-color: rgba(0, 0, 0, 20);
 color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
@@ -603,12 +609,12 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0);
-color: white;
-padding: 10px;
+     <string notr="true">border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
-border-radius: 15px;</string>
+background-color: rgba(0, 0, 0, 20);
+color: rgb(255, 255, 255);
+padding:10px;</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -623,7 +629,40 @@ border-radius: 15px;</string>
      <string>Иркутск</string>
     </property>
    </widget>
+   <widget class="QLabel" name="filler">
+    <property name="geometry">
+     <rect>
+      <x>159</x>
+      <y>118</y>
+      <width>615</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid;
+border-color: rgba(255, 255, 255, 50);
+background-color: rgba(0, 0, 0, 20);
+color: white;
+padding:10px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
    <zorder>label_14</zorder>
+   <zorder>filler</zorder>
    <zorder>setting_button</zorder>
    <zorder>setting_button_3</zorder>
    <zorder>label_12</zorder>

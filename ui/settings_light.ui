@@ -156,7 +156,7 @@ padding:10px;</string>
      <string notr="true">border-radius: 20px;
 border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
-background-color: none;
+background-color: rgba(0, 0, 0, 20);
 padding:10px;
 color: white;</string>
     </property>
@@ -214,7 +214,7 @@ padding:10px;</string>
      <string notr="true">border-radius: 20px;
 border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
-background-color: none;
+background-color: rgba(0, 0, 0, 20);
 color: white;
 padding:10px;</string>
     </property>
@@ -345,7 +345,7 @@ text-align: right;</string>
      <string notr="true">border-radius: 20px;
 border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
-background-color: none;
+background-color: rgba(0, 0, 0, 20);
 color: white;
 padding:10px;</string>
     </property>
@@ -377,7 +377,7 @@ padding:10px;</string>
      <string notr="true">border-radius: 20px;
 border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
-background-color: none;
+background-color: rgba(0, 0, 0, 20);
 color: white;
 padding:10px;</string>
     </property>
@@ -480,12 +480,4 @@ padding:10px;</string>
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="autorun"/>
-  <buttongroup name="theme">
-   <property name="exclusive">
-    <bool>true</bool>
-   </property>
-  </buttongroup>
- </buttongroups>
 </ui>

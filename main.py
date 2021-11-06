@@ -5,6 +5,7 @@ import pathlib
 import datetime
 import database
 import json
+import asyncio
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -57,12 +58,12 @@ class Windows(QMainWindow):
         self.readSettings()
         global currentCity
         currentCity = defaultCity
-        self.updateParsers()
         global parsers
         global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
         self.init_main()
+        self.updateParsers()
         self.updateData()
 
     def updateCityName(self):
@@ -70,15 +71,10 @@ class Windows(QMainWindow):
         global currentCity
         currentCity = self.cityNameField.toPlainText()
 
-    def toggleParser(self) -> None:
+    def toggleParser(self, index) -> None:
         """Switching to the next available parser"""
         global parsers, currentParser
-        if parsers.index(currentParser) + 1 < len(parsers):
-            currentParser = parsers[parsers.index(currentParser) + 1]
-        else:
-            currentParser = parsers[0]
-        # Setting the weather source button's text
-        self.setting_button_3.setText(currentParser.name)
+        currentParser = parsers[index]
         self.updateData()
 
     def readSettings(self):
@@ -95,7 +91,7 @@ class Windows(QMainWindow):
         except Exception as e:
             debug(f"Couldn't load settings: {e}")
 
-    def writeSettings(self):
+    async def writeSettings(self):
         """Save settings to the JSON file"""
         try:
             global defaultCity, theme, isAutorun
@@ -130,6 +126,13 @@ class Windows(QMainWindow):
                 filenames.remove(i)
         global parsers
         parsers = result
+        self.updateParsersUI()
+
+    def updateParsersUI(self):
+        global parsers
+        self.parserBox.clear()
+        for i in parsers:
+            self.parserBox.addItem(i.name)
 
     def getData(self) -> dict:
         """Get data from current parser"""
@@ -202,8 +205,9 @@ class Windows(QMainWindow):
         self.cityNameField.textChanged.connect(self.updateCityName)
         self.setting_button.clicked.connect(self.init_settings)
         self.reload_button.clicked.connect(self.updateData)
-        self.setting_button_3.clicked.connect(self.toggleParser)
         global last_data
+        self.updateParsersUI()  # Updating parsers list in UI
+        self.parserBox.currentIndexChanged.connect(self.toggleParser)
         self.updateUI(last_data)  # Updating UI
 
     def changeHometown(self):
@@ -213,7 +217,9 @@ class Windows(QMainWindow):
 
     def transitToMain(self):
         """Transition method from settings to main window"""
-        self.writeSettings()
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.writeSettings())
         self.init_main()
 
     # Settings window

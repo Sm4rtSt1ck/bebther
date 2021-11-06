@@ -61,36 +61,6 @@ padding:8px;</string>
      <string>⚙</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="setting_button_3">
-    <property name="geometry">
-     <rect>
-      <x>679</x>
-      <y>8</y>
-      <width>215</width>
-      <height>59</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiLight</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select Weather Provider&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgba(255, 255, 255, 50);
-background-color: rgba(0, 0, 0, 20);
-color: rgb(255, 255, 255);
-padding:10px;</string>
-    </property>
-    <property name="text">
-     <string>AccuWeather</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="l_sunrise">
     <property name="geometry">
      <rect>
@@ -718,10 +688,49 @@ padding:8px;</string>
      <pixmap>images/reload.png</pixmap>
     </property>
    </widget>
+   <widget class="QComboBox" name="parserBox">
+    <property name="geometry">
+     <rect>
+      <x>679</x>
+      <y>8</y>
+      <width>215</width>
+      <height>59</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{border-radius: 20px;
+border: 1px solid white;
+border-color: rgba(255, 255, 255, 50);
+background-color: rgba(0, 0, 0, 20);
+color: rgb(255, 255, 255);
+padding:10px;
+}
+QComboBox::drop-down 
+{
+	border: 0px solid;
+}
+QComboBox QAbstractItemView {
+  color: white;	
+  background-color: rgb(56, 167, 192);
+  border-radius: 5px;
+  padding: 10px;
+  selection-background-color: rgba(255, 255, 255, 70);
+}</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+   </widget>
    <zorder>label_14</zorder>
    <zorder>filler</zorder>
    <zorder>setting_button</zorder>
-   <zorder>setting_button_3</zorder>
    <zorder>l_sunrise</zorder>
    <zorder>l_pressure</zorder>
    <zorder>l_humidity</zorder>
@@ -743,6 +752,7 @@ padding:8px;</string>
    <zorder>cityNameField</zorder>
    <zorder>label_12</zorder>
    <zorder>reload_button</zorder>
+   <zorder>parserBox</zorder>
   </widget>
  </widget>
  <resources>

@@ -79,6 +79,7 @@ class Windows(QMainWindow):
             currentParser = parsers[0]
         # Setting the weather source button's text
         self.setting_button_3.setText(currentParser.name)
+        self.updateData()
 
     def readSettings(self):
         """Read settings from the JSON file"""
@@ -157,6 +158,8 @@ class Windows(QMainWindow):
                 f"{'+' if data['DayTemperature'] > 0 else ''}"
                 + f"{data['DayTemperature']}°"
             )
+            self.label_3.setText(
+                datetime.datetime.now().time().strftime("%H:%M"))
             self.l_night_temp.setText(
                 f"{'+' if data['NightTemperature'] > 0 else ''}"
                 + f"{data['NightTemperature']}°"
@@ -197,6 +200,8 @@ class Windows(QMainWindow):
         self.cityNameField.setPlainText(currentCity)
         self.cityNameField.textChanged.connect(self.updateCityName)
         self.setting_button.clicked.connect(self.init_settings)
+        self.reload_button.clicked.connect(self.updateData)
+        self.setting_button_3.clicked.connect(self.toggleParser)
         global last_data
         self.updateUI(last_data)
 

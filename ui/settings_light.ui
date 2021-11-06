@@ -30,7 +30,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/background_settings.png</pixmap>
+     <pixmap>images/light/background_settings.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="theme_field">
@@ -51,9 +51,9 @@
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -79,7 +79,7 @@ padding:10px;</string>
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -105,7 +105,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -133,9 +133,9 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -160,9 +160,9 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -185,7 +185,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -211,7 +211,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(200, 200, 255);
+     <string notr="true">color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -244,9 +244,9 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: none;
-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
 padding:10px;</string>
     </property>
     <property name="text">
@@ -280,10 +280,10 @@ padding:10px;</string>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
-border-color: rgb(66, 79, 122);
+border-color: rgb(200, 200, 255);
 background-color: rgba(0, 0, 0, 0);
-color: rgb(200, 200, 255);
-selection-color: rgb(200, 200, 255);
+color: rgb(255, 255, 255);
+selection-color: rgb(255, 255, 255);
 selection-background-color: rgba(0, 0, 0, 50);
 padding:10px;</string>
     </property>
@@ -308,11 +308,11 @@ padding:10px;</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="autorun"/>
   <buttongroup name="theme">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
+  <buttongroup name="autorun"/>
  </buttongroups>
 </ui>

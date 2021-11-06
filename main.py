@@ -9,6 +9,7 @@ isDebug = True
 # Controls some behavior such as debug-outputs
 currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers
+currentCity = "Иркутск"
 
 
 def debug(value):
@@ -39,7 +40,9 @@ class MainWindow(QMainWindow):
     def load_main(self):
         """Loading main UI window and assigning buttons"""
         uic.loadUi("main.ui", self)
+        self.cityNameField.setPlainText(currentCity)
         self.setting_button.clicked.connect(self.load_settings)
+        self.cityNameField.textChanged.connect(self.updateCityName)
         self.setting_button_3.clicked.connect(self.toggleParser)
 
     def load_settings(self):
@@ -47,6 +50,11 @@ class MainWindow(QMainWindow):
         uic.loadUi("settings.ui", self)
         self.main_button.clicked.connect(self.load_main)
         self.autorun_on.clicked.connect(Settings.autorun_on)
+
+    def updateCityName(self):
+        """Update backend cityName variable from UI"""
+        global currentCity
+        currentCity = self.cityNameField.toPlainText()
 
     def toggleParser(self) -> None:
         """Switching to the next available parser"""
@@ -85,7 +93,7 @@ class MainWindow(QMainWindow):
         if currentParser is None:
             return None
         # Getting the parsed data
-        data = currentParser.getData()
+        data = currentParser.getData(currentParser.getCity(currentCity))
         debug(data if data is not None else "NO WEATHER")
         if data is not None:
             self.l_temp.setText(

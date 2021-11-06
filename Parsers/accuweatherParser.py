@@ -12,7 +12,7 @@ class Parser(baseParser.Parser):
          from the most accurate weather forecasting technology\
               featuring up to the minute weather reports."
     URL = "https://www.accuweather.com/"
-    apikey = "QxpQIeCf2j0G5iVl043GHXgBCxIP5Iry"
+    apikey = "2LkBQzbEiYQyUvlWEfSqjg0GSsLERr4c"
     # QxpQIeCf2j0G5iVl043GHXgBCxIP5Iry
     # 2LkBQzbEiYQyUvlWEfSqjg0GSsLERr4c
 
@@ -67,3 +67,14 @@ class Parser(baseParser.Parser):
         data["WindSpeed"] = response[0]["Wind"]["Speed"]["Metric"]["Value"]
         data["UVIndex"] = response[0]["UVIndex"]
         return data
+
+    def getCity(cityName="Irkutsk") -> str:
+        """Get city ID by the city name"""
+        response = requests.get(
+            url="http://dataservice.accuweather.com/locations/v1/cities/"
+            + f"search/?apikey={Parser.apikey}&q={cityName}&language=ru-ru")
+        print(response.url)
+        if response.status_code != 200:
+            return None
+        response = json.loads(response. content)
+        return response[0]["Key"]

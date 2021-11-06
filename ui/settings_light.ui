@@ -225,56 +225,6 @@ padding:10px;</string>
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="hometown_button">
-    <property name="geometry">
-     <rect>
-      <x>618</x>
-      <y>141</y>
-      <width>244</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-      <stylestrategy>PreferDefault</stylestrategy>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px;
-border: 1px solid white;
-border-color: rgba(255, 255, 255, 50);
-background-color: rgba(0, 0, 0, 0);
-selection-color: rgb(200, 200, 255);
-selection-background-color: rgba(0, 0, 0, 50);
-color: white;
-padding:10px;</string>
-    </property>
-    <item>
-     <property name="text">
-      <string>Irkutsk</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>New York</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Bebra City</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QRadioButton" name="theme_dark">
     <property name="geometry">
      <rect>
@@ -460,6 +410,42 @@ padding:10px;</string>
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QPlainTextEdit" name="hometownField">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>140</y>
+      <width>231</width>
+      <height>59</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+border: 1px solid white;
+border-color: rgba(255, 255, 255, 50);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 255, 255);
+padding:10px;</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QPlainTextEdit::NoWrap</enum>
+    </property>
+    <property name="plainText">
+     <string>Иркутск</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>hometown_field</zorder>
    <zorder>autorun_field</zorder>
@@ -470,12 +456,12 @@ padding:10px;</string>
    <zorder>autorun_off</zorder>
    <zorder>theme_light</zorder>
    <zorder>Contacts_field</zorder>
-   <zorder>hometown_button</zorder>
    <zorder>theme_dark</zorder>
    <zorder>devname_8</zorder>
    <zorder>devname_10</zorder>
    <zorder>devname_6</zorder>
    <zorder>devname_9</zorder>
+   <zorder>hometownField</zorder>
   </widget>
  </widget>
  <resources/>

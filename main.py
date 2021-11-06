@@ -81,9 +81,12 @@ class Windows(QMainWindow):
         self.setting_button_3.setText(currentParser.name)
 
     def readSettings(self):
+        """Read settings from the JSON file"""
         try:
+            # Opening the file and parsing JSON
             data = json.loads(open("settings.json", "r").readline())
             global defaultCity, theme, isAutorun
+            # Applying to variables
             defaultCity = data["defaultCity"]
             theme = data["theme"]
             isAutorun = data["isAutorun"]
@@ -92,14 +95,17 @@ class Windows(QMainWindow):
             debug(f"Couldn't load settings: {e}")
 
     def writeSettings(self):
+        """Save settings to the JSON file"""
         try:
             global defaultCity, theme, isAutorun
             sfile = open("settings.json", "w")
             settings = dict()
             print(defaultCity)
+            # Filling in the dictionary
             settings["defaultCity"] = defaultCity
             settings["theme"] = theme
             settings["isAutorun"] = isAutorun
+            # Writing the dumped JSON data to file
             sfile.write(json.dumps(settings))
         except Exception as e:
             debug(f"Couldn't save settings: {e}")
@@ -195,6 +201,16 @@ class Windows(QMainWindow):
         global last_data
         self.updateUI(last_data)
 
+    def changeHometown(self):
+        """Change local entry of default city and save settings"""
+        global defaultCity
+        defaultCity = self.hometownField.toPlainText()
+
+    def transitToMain(self):
+        """Transition method from settings to main window"""
+        self.writeSettings()
+        self.init_main()
+
     # Settings window
     def init_settings(self):
         """Loads gui of settings window,
@@ -266,18 +282,18 @@ class Windows(QMainWindow):
         def buttons():
             """Connects buttons to functions"""
             # Main menu button
-            self.main_button.clicked.connect(self.init_main)
+            self.main_button.clicked.connect(self.transitToMain)
 
             # Theme buttons
+            self.hometownField.textChanged.connect(self.changeHometown)
+            global defaultCity
+            self.hometownField.setPlainText(defaultCity)
             self.theme_light.clicked.connect(changeTheme)
             self.theme_dark.clicked.connect(changeTheme)
             self.theme_light.setChecked(
                 True if theme == windows["light"] else False)
             self.theme_dark.setChecked(
                 True if theme == windows["dark"] else False)
-
-            # Hometown combobox
-            self.hometown_button.currentIndexChanged.connect(changeHometown)
 
             # Autorun buttons
             self.autorun_on.clicked.connect(autorun)

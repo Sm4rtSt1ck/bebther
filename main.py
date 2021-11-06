@@ -211,7 +211,6 @@ class Windows(QMainWindow):
             from PIL import Image, ImageDraw, ImageFont
             global last_data
             # Opens icons
-            print("PIZDA")
             clr = "_black" if theme == windows["light"] else ""
             images = f"{directory}\\ui\\images\\highres"
             humidity = Image.open(

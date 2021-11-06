@@ -1,5 +1,6 @@
 /.VSCodeCounter/
 *.db
+settings.json
 
 *.pyc
 # Byte-compiled / optimized / DLL files

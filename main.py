@@ -100,7 +100,6 @@ class Windows(QMainWindow):
             global defaultCity, theme, isAutorun
             sfile = open("settings.json", "w")
             settings = dict()
-            print(defaultCity)
             # Filling in the dictionary
             settings["defaultCity"] = defaultCity
             settings["theme"] = theme
@@ -233,9 +232,6 @@ class Windows(QMainWindow):
             light() if self.theme_light.isChecked() else dark()
             buttons()
             self.writeSettings()
-
-        def changeHometown(index):
-            pass
 
         def autorun():
             def on():

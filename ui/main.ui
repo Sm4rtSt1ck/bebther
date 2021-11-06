@@ -116,7 +116,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;6:00&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>00:00</string>
     </property>
    </widget>
    <widget class="QLabel" name="l_pressure">
@@ -141,7 +141,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>228</string>
+     <string>0000</string>
     </property>
    </widget>
    <widget class="QLabel" name="l_humidity">
@@ -169,7 +169,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>007%</string>
+     <string>000%</string>
     </property>
    </widget>
    <widget class="QLabel" name="l_temp">
@@ -193,7 +193,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>2.2°</string>
+     <string>0°</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -221,7 +221,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>19:00</string>
+     <string>00:00</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -246,7 +246,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>13:37</string>
+     <string>NO DATA</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -368,7 +368,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>1488</string>
+     <string>0 m/s</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -457,7 +457,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>1488</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -501,7 +501,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>30°</string>
+     <string>0°</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -545,7 +545,7 @@ padding:10px;</string>
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>10°</string>
+     <string>0°</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

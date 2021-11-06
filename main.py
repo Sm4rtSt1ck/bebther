@@ -151,7 +151,7 @@ class Windows(QMainWindow):
             )
             # Filling the parsed data into UI labels
             self.l_humidity.setText(f"{data['Humidity']}%")
-            self.l_wind_speed.setText(f"{data['WindSpeed']}m/s")
+            self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
             self.l_pressure.setText(f"{data['Pressure']}")
             self.l_uv_index.setText(f"{data['UVIndex']}")
             self.l_day_temp.setText(

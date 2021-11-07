@@ -193,7 +193,7 @@ padding:10px;</string>
      <string>Light</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">theme</string>
+     <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
    <widget class="QLabel" name="Contacts_field">
@@ -252,7 +252,7 @@ text-align: right;</string>
      <string>Dark</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">theme</string>
+     <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
    <widget class="QLabel" name="devname_8">
@@ -475,6 +475,6 @@ padding:10px;</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="theme"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

@@ -54,3 +54,21 @@ class DBFailDialog(QDialog):
         self.layout.addWidget(msg)
         self.layout.addWidget(self.btn)
         self.setLayout(self.layout)
+
+
+class ShareFailDialog(QDialog):
+    """Notification dialog about failing share operation"""
+    def __init__(self) -> None:
+        super().__init__()
+        self.setWindowTitle("Sorry!")
+        btn = QDialogButtonBox.Ok
+        self.btn = QDialogButtonBox(btn)
+        self.btn.clicked.connect(self.close)
+        self.layout = QVBoxLayout()
+        msg = QLabel(
+            "Can't share because there is no available data.\n"
+            + "Please, change the weather source or update the data"
+            )
+        self.layout.addWidget(msg)
+        self.layout.addWidget(self.btn)
+        self.setLayout(self.layout)

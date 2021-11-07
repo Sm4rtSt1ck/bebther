@@ -6,8 +6,6 @@ import datetime
 class Worker:
     def output_image(last_data, theme):
         # Opens icons
-        if last_data is None:
-            return None
         clr = "_black" if theme == main.windows["light"] else ""
         images = f"{main.directory}\\ui\\images\\highres"
         humidity = Image.open(

@@ -229,6 +229,9 @@ class Windows(QMainWindow):
         def share() -> None:
             """Opens picture with info about weather"""
             global last_data
+            if last_data is None:
+                dialogs.ShareFailDialog().exec()
+                return
             images.Worker.output_image(last_data, theme)
 
         def buttons() -> None:

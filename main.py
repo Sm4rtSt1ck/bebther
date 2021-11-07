@@ -69,7 +69,6 @@ class Windows(QMainWindow):
             currentParser = parsers[0]
         self.init_main()
         self.updateParsers()
-        self.updateData()
 
     def updateCityName(self) -> None:
         """Update backend cityName variable from UI"""

@@ -948,8 +948,6 @@ padding:8px;</string>
    <zorder>save_button</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="bebr.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

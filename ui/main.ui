@@ -885,8 +885,6 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
    <zorder>l_save_icon</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="bebr.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

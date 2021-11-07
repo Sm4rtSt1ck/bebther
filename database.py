@@ -32,10 +32,10 @@ def initialize() -> None:
         City text NOT NULL,
         Source text NOT NULL,
         Temperature float,
-        TemperatureNight float,
-        TemperatureDay float,
+        NightTemperature float,
+        DayTemperature float,
         Pressure float,
-        Ultraviolet integer,
+        UVIndex integer,
         SunriseTime time,
         SunsetTime time,
         Humidity float,
@@ -57,7 +57,7 @@ def write(data) -> bool:
     try:
         # Writing data to the database
         db.execute(f"""INSERT INTO Weather(Date, City, Source, Temperature, \
-            TemperatureDay, TemperatureNight, Pressure, Ultraviolet,\
+            DayTemperature, NightTemperature, Pressure, UVIndex,\
                  SunriseTime, SunsetTime, Humidity, WindSpeed)
     VALUES(\
         date('{data["Date"].strftime("%Y-%m-%d")}'),\

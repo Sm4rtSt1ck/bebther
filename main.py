@@ -199,6 +199,7 @@ class Windows(QMainWindow):
         global last_data, currentCity, currentParser
         if last_data is None:
             debug("last_data was None, couldn't write to the db")
+            dialogs.DBFailDialog().exec()
             return
         # Formatting dict for database entry
         data = last_data
@@ -207,11 +208,14 @@ class Windows(QMainWindow):
         data["WeatherSource"] = currentParser.name
         if database.db is None:
             debug("WRITE: database does not exist")
+            dialogs.DBFailDialog().exec()
             return
         try:
             database.write(last_data)
+            dialogs.DBSavedDialog().exec()
         except Exception as e:
             debug(f"Couldn't write to the database: {e}")
+            dialogs.DBFailDialog().exec()
 
     # Main window
     def init_main(self) -> None:
@@ -238,6 +242,7 @@ class Windows(QMainWindow):
             self.compare_days_button.clicked.connect(self.init_compare_days)
             self.compare_sources_button.clicked.connect(
                 self.init_compare_sources)
+            self.save_button.clicked.connect(self.pushToDatabase)
             self.share_button.clicked.connect(share)
         buttons()
 
@@ -354,6 +359,84 @@ class Windows(QMainWindow):
         uic.loadUi(theme["compare_days"], self)
 
         self.main_button.clicked.connect(self.init_main)
+
+        def fill_data() -> None:
+            """Fill the weather data into UI labels"""
+            def today() -> None:
+                """Fill today's weather data into UI labels"""
+                global last_data
+                data = last_data
+                if data is None:
+                    return False
+                # Filling parsed data into UI labels
+                self.l_humidity_3.setText(f"{data['Humidity']}%")
+                self.l_wind_speed_3.setText(f"{data['WindSpeed']} m/s")
+                self.l_pressure_3.setText(f"{data['Pressure']}")
+                self.l_uv_index_3.setText(f"{data['UVIndex']}")
+                self.l_day_temp_3.setText(
+                    f"{'+' if data['DayTemperature'] > 0 else ''}"
+                    + f"{data['DayTemperature']}°"
+                )
+                self.l_night_temp_3.setText(
+                    f"{'+' if data['NightTemperature'] > 0 else ''}"
+                    + f"{data['NightTemperature']}°"
+                )
+                self.l_sunrise_3.setText(f"{data['SunriseTime']}")
+                self.l_sunset_3.setText(f"{data['SunsetTime']}")
+
+            def yesterday() -> None:
+                """Fill yesterday's weather data into UI labels"""
+                global last_data
+                date = datetime.date.today()
+                date = date - datetime.timedelta(days=1)
+                data = database.read(date)
+                if data is None:
+                    return False
+                # Filling parsed data into UI labels
+                self.l_humidity_2.setText(f"{data['Humidity']}%")
+                self.l_wind_speed_2.setText(f"{data['WindSpeed']} m/s")
+                self.l_pressure_2.setText(f"{data['Pressure']}")
+                self.l_uv_index_2.setText(f"{data['UVIndex']}")
+                self.l_day_temp_2.setText(
+                    f"{'+' if data['DayTemperature'] > 0 else ''}"
+                    + f"{data['DayTemperature']}°"
+                )
+                self.l_night_temp_2.setText(
+                    f"{'+' if data['NightTemperature'] > 0 else ''}"
+                    + f"{data['NightTemperature']}°"
+                )
+                self.l_sunrise_2.setText(f"{data['SunriseTime']}")
+                self.l_sunset_2.setText(f"{data['SunsetTime']}")
+
+            def tda() -> None:
+                """Fill two-days-ago's weather data into UI labels"""
+                global last_data
+                date = datetime.date.today()
+                date = date - datetime.timedelta(days=2)
+                data = database.read(date)
+                if data is None:
+                    return False
+                # Filling parsed data into UI labels
+                self.l_humidity.setText(f"{data['Humidity']}%")
+                self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
+                self.l_pressure.setText(f"{data['Pressure']}")
+                self.l_uv_index.setText(f"{data['UVIndex']}")
+                self.l_day_temp.setText(
+                    f"{'+' if data['DayTemperature'] > 0 else ''}"
+                    + f"{data['DayTemperature']}°"
+                )
+                self.l_night_temp.setText(
+                    f"{'+' if data['NightTemperature'] > 0 else ''}"
+                    + f"{data['NightTemperature']}°"
+                )
+                self.l_sunrise.setText(f"{data['SunriseTime']}")
+                self.l_sunset.setText(f"{data['SunsetTime']}")
+
+            today()
+            yesterday()
+            tda()
+
+        fill_data()
 
     def init_compare_sources(self) -> None:
         """Initialize the source comparison UI"""

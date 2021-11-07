@@ -9,7 +9,7 @@ from os import walk
 import images
 
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow, QLabel
 
 # References if the debug mode is enabled.
 isDebug = True  # Controls some behavior such as debug-outputs
@@ -41,7 +41,7 @@ defaultCity = "Иркутск"
 last_data = None
 
 
-def debug(value):
+def debug(value) -> None:
     """Modified print method. Prints value if the debug mode is enabled"""
     if isDebug:
         if type(value) == list or type(value) == dict:
@@ -53,7 +53,7 @@ def debug(value):
 
 class Windows(QMainWindow):
     """Windows functionality"""
-    def __init__(self):
+    def __init__(self) -> None:
         """UI Initialization"""
         super().__init__()
         # Connecting and initializing the database
@@ -70,7 +70,7 @@ class Windows(QMainWindow):
         self.updateParsers()
         self.updateData()
 
-    def updateCityName(self):
+    def updateCityName(self) -> None:
         """Update backend cityName variable from UI"""
         global currentCity
         currentCity = self.cityNameField.toPlainText()
@@ -81,7 +81,7 @@ class Windows(QMainWindow):
         currentParser = parsers[index]
         self.updateData()
 
-    def readSettings(self):
+    def readSettings(self) -> None:
         """Read settings from the JSON file"""
         try:
             # Opening the file and parsing JSON
@@ -96,7 +96,7 @@ class Windows(QMainWindow):
         except Exception as e:
             debug(f"Couldn't load settings: {e}")
 
-    async def writeSettings(self):
+    async def writeSettings(self) -> None:
         """Save settings to the JSON file"""
         try:
             global defaultCity, theme, isAutorun
@@ -111,7 +111,7 @@ class Windows(QMainWindow):
         except Exception as e:
             debug(f"Couldn't save settings: {e}")
 
-    def updateParsers(self):
+    def updateParsers(self) -> None:
         """Updating list of available parsers"""
         files = list()
         # Getting all files present in the ./Parsers/ folder
@@ -133,11 +133,19 @@ class Windows(QMainWindow):
         parsers = result
         self.updateParsersUI()
 
-    def updateParsersUI(self):
+    def updateParsersUI(self) -> None:
+        """Updating QComboBox items in UI, adding parsers to select"""
         global parsers
         self.parserBox.clear()
         for i in parsers:
             self.parserBox.addItem(i.name)
+
+    def updateOneParserUI(self, box: QComboBox) -> None:
+        """Updating given QComboBox, adding parsers to select"""
+        global parsers
+        box.clear()
+        for i in parsers:
+            box.addItem(i.name)
 
     def getData(self) -> dict:
         """Get data from current parser"""
@@ -203,7 +211,7 @@ class Windows(QMainWindow):
             debug(f"Couldn't write to the database: {e}")
 
     # Main window
-    def init_main(self):
+    def init_main(self) -> None:
         """Loads gui of main window,
         defines functions and connects buttons to thems"""
         uic.loadUi(theme["main"], self)
@@ -212,12 +220,12 @@ class Windows(QMainWindow):
         self.parserBox.currentIndexChanged.connect(self.toggleParser)
         self.updateUI(last_data)  # Updating UI
 
-        def share():
+        def share() -> None:
             """Opens picture with info about weather"""
             global last_data
             images.Worker.output_image(last_data, theme)
 
-        def buttons():
+        def buttons() -> None:
             """Connects buttons to functions"""
             self.cityNameField.setPlainText(currentCity)
             self.cityNameField.textChanged.connect(self.updateCityName)
@@ -230,12 +238,12 @@ class Windows(QMainWindow):
             self.share_button.clicked.connect(share)
         buttons()
 
-    def changeHometown(self):
+    def changeHometown(self) -> None:
         """Changes local entry of default city and save settings"""
         global defaultCity
         defaultCity = self.hometownField.toPlainText()
 
-    def transitToMain(self):
+    def transitToMain(self) -> None:
         """Transition method from settings to main window"""
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -243,21 +251,21 @@ class Windows(QMainWindow):
         self.init_main()
 
     # Settings window
-    def init_settings(self):
+    def init_settings(self) -> None:
         """Loads gui of settings window,
         defines functions and connects buttons to them"""
         uic.loadUi(theme["settings"], self)
 
-        def changeTheme():
+        def changeTheme() -> None:
             """Changes theme"""
-            def light():
+            def light() -> None:
                 """Switches theme to light"""
                 global theme
                 theme = windows["light"]
                 # Reloads current window
                 uic.loadUi(theme["settings"], self)
 
-            def dark():
+            def dark() -> None:
                 """Switches theme to dark"""
                 global theme
                 theme = windows["dark"]
@@ -268,8 +276,8 @@ class Windows(QMainWindow):
             buttons()
             self.writeSettings()
 
-        def autorun():
-            def on():
+        def autorun() -> None:
+            def on() -> None:
                 """Turns autorun on"""
                 global isAutorun
                 import winreg
@@ -292,7 +300,7 @@ class Windows(QMainWindow):
                 winreg.CloseKey(key)
                 isAutorun = True
 
-            def off():
+            def off() -> None:
                 """Turns autorun off"""
                 global isAutorun
                 import winreg
@@ -315,7 +323,7 @@ class Windows(QMainWindow):
             on() if self.autorun_on.isChecked() else off()
             self.writeSettings()
 
-        def buttons():
+        def buttons() -> None:
             """Connects buttons to functions"""
             # Main menu button
             self.main_button.clicked.connect(self.transitToMain)
@@ -338,15 +346,66 @@ class Windows(QMainWindow):
             self.autorun_off.setChecked(False if isAutorun else True)
         buttons()
 
-    def init_compare_days(self):
+    def init_compare_days(self) -> None:
+        """Initialize the day comparison UI"""
         uic.loadUi(theme["compare_days"], self)
 
         self.main_button.clicked.connect(self.init_main)
 
-    def init_compare_sources(self):
+    def init_compare_sources(self) -> None:
+        """Initialize the source comparison UI"""
         uic.loadUi(theme["compare_sources"], self)
-
+        self.updateOneParserUI(self.parserBox)
+        self.updateOneParserUI(self.parserBox_2)
+        self.parserBox.currentIndexChanged.connect(self.updateCmpData1)
+        self.parserBox_2.currentIndexChanged.connect(self.updateCmpData2)
         self.main_button.clicked.connect(self.init_main)
+
+    def updateCmpData1(self, index) -> None:
+        """Update data for first comparison box"""
+        global parsers, currentParser
+        currentParser = parsers[index]
+        data = self.getData()
+        if data is None:
+            return False
+        # Filling parsed data into UI labels
+        self.l_humidity.setText(f"{data['Humidity']}%")
+        self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
+        self.l_pressure.setText(f"{data['Pressure']}")
+        self.l_uv_index.setText(f"{data['UVIndex']}")
+        self.l_day_temp.setText(
+            f"{'+' if data['DayTemperature'] > 0 else ''}"
+            + f"{data['DayTemperature']}°"
+        )
+        self.l_night_temp.setText(
+            f"{'+' if data['NightTemperature'] > 0 else ''}"
+            + f"{data['NightTemperature']}°"
+        )
+        self.l_sunrise.setText(f"{data['SunriseTime']}")
+        self.l_sunset.setText(f"{data['SunsetTime']}")
+
+    def updateCmpData2(self, index) -> None:
+        """Update data for second comparison box"""
+        global parsers, currentParser
+        currentParser = parsers[index]
+        data = self.getData()
+        if data is None:
+            return False
+        # Filling parsed data into UI labels
+        self.l_humidity_2.setText(f"{data['Humidity']}%")
+        self.l_wind_speed_2.setText(f"{data['WindSpeed']} m/s")
+        self.l_pressure_2.setText(f"{data['Pressure']}")
+        self.l_uv_index_2.setText(f"{data['UVIndex']}")
+        self.l_day_temp_2.setText(
+            f"{'+' if data['DayTemperature'] > 0 else ''}"
+            + f"{data['DayTemperature']}°"
+        )
+        self.l_night_temp_2.setText(
+            f"{'+' if data['NightTemperature'] > 0 else ''}"
+            + f"{data['NightTemperature']}°"
+        )
+        self.l_sunrise_2.setText(f"{data['SunriseTime']}")
+        self.l_sunset_2.setText(f"{data['SunsetTime']}")
 
 
 # Program's entry point

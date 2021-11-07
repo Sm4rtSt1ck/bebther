@@ -10,9 +10,8 @@ import images
 import dialogs
 
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QComboBox, QDialog, QMainWindow
+from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow
 
-# References if the debug mode is enabled.
 isDebug = True  # Controls some behavior such as debug-outputs
 currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers

@@ -2,12 +2,12 @@ import sys
 import datetime
 import pathlib
 import datetime
-import database
+import Modules.database as database
 import json
 import asyncio
 from os import walk
-import images
-import dialogs
+import Modules.images as images
+import Modules.dialogs as dialogs
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow

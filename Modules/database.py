@@ -12,7 +12,8 @@ def start() -> None:
     # Trying to connect to the database
     try:
         db = sqlite3.connect(
-            f"{pathlib.Path(__file__).parent.resolve()}/Database/weather.db")
+            f"{pathlib.Path(__file__).parent.resolve().parent}"
+            + "/Database/weather.db")
         debug(f"Database opened")
     except Exception as e:
         debug(f"Exception on opening database: {e}")

@@ -445,6 +445,17 @@ class Windows(QMainWindow):
         uic.loadUi(theme["compare_sources"], self)
         self.updateOneParserUI(self.parserBox)
         self.updateOneParserUI(self.parserBox_2)
+        global parsers
+        if len(parsers) > 0:
+            self.updateCmpData1(0)
+            self.parserBox.setCurrentIndex(0)
+            if len(parsers) > 1:
+                self.updateCmpData2(1)
+                self.parserBox_2.setCurrentIndex(1)
+            else:
+                self.updateCmpData2(0)
+                self.parserBox_2.setCurrentIndex(0)
+
         self.parserBox.currentIndexChanged.connect(self.updateCmpData1)
         self.parserBox_2.currentIndexChanged.connect(self.updateCmpData2)
         self.main_button.clicked.connect(self.init_main)

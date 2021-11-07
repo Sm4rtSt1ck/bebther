@@ -58,7 +58,7 @@ class Windows(QMainWindow):
         super().__init__()
         # Connecting and initializing the database
         database.start()
-        # Initial UI setup
+        # Initial setup
         self.readSettings()
         global currentCity
         currentCity = defaultCity
@@ -66,6 +66,7 @@ class Windows(QMainWindow):
         global currentParser
         if len(parsers) > 0:
             currentParser = parsers[0]
+        # Opening main window
         self.init_main()
         self.updateParsers()
 
@@ -255,6 +256,7 @@ class Windows(QMainWindow):
 
     def transitToMain(self) -> None:
         """Transition method from settings to main window"""
+        # Running settings save operarion async so it won't freeze the UI
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.run_until_complete(self.writeSettings())
@@ -443,9 +445,11 @@ class Windows(QMainWindow):
     def init_compare_sources(self) -> None:
         """Initialize the source comparison UI"""
         uic.loadUi(theme["compare_sources"], self)
+        # Adding parsers list to QComboBoxes
         self.updateOneParserUI(self.parserBox)
         self.updateOneParserUI(self.parserBox_2)
         global parsers
+        # Connecting UI to the parser
         if len(parsers) > 0:
             self.updateCmpData1(0)
             self.parserBox.setCurrentIndex(0)

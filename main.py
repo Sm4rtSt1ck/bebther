@@ -7,9 +7,10 @@ import json
 import asyncio
 from os import walk
 import images
+import dialogs
 
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QComboBox, QMainWindow, QLabel
+from PyQt5.QtWidgets import QApplication, QComboBox, QDialog, QMainWindow
 
 # References if the debug mode is enabled.
 isDebug = True  # Controls some behavior such as debug-outputs
@@ -156,32 +157,35 @@ class Windows(QMainWindow):
         data = currentParser.getData(currentParser.getCity(currentCity))
         debug(data if data is not None else "NO WEATHER")
         last_data = data
+        if data is None:
+            dialogs.NoDataDialog().exec()
         return data
 
     def updateUI(self, data) -> None:
         """Updating weather data"""
-        if data is not None:
-            self.l_temp.setText(
-                f"{'+' if data['Temperature'] > 0 else ''}"
-                + f"{data['Temperature']}°"
-            )
-            # Filling parsed data into UI labels
-            self.l_humidity.setText(f"{data['Humidity']}%")
-            self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
-            self.l_pressure.setText(f"{data['Pressure']}")
-            self.l_uv_index.setText(f"{data['UVIndex']}")
-            self.l_day_temp.setText(
-                f"{'+' if data['DayTemperature'] > 0 else ''}"
-                + f"{data['DayTemperature']}°"
-            )
-            self.label_3.setText(
-                datetime.datetime.now().time().strftime("%H:%M"))
-            self.l_night_temp.setText(
-                f"{'+' if data['NightTemperature'] > 0 else ''}"
-                + f"{data['NightTemperature']}°"
-            )
-            self.l_sunrise.setText(f"{data['SunriseTime']}")
-            self.l_sunset.setText(f"{data['SunsetTime']}")
+        if data is None:
+            return None
+        self.l_temp.setText(
+            f"{'+' if data['Temperature'] > 0 else ''}"
+            + f"{data['Temperature']}°"
+        )
+        # Filling parsed data into UI labels
+        self.l_humidity.setText(f"{data['Humidity']}%")
+        self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
+        self.l_pressure.setText(f"{data['Pressure']}")
+        self.l_uv_index.setText(f"{data['UVIndex']}")
+        self.l_day_temp.setText(
+            f"{'+' if data['DayTemperature'] > 0 else ''}"
+            + f"{data['DayTemperature']}°"
+        )
+        self.label_3.setText(
+            datetime.datetime.now().time().strftime("%H:%M"))
+        self.l_night_temp.setText(
+            f"{'+' if data['NightTemperature'] > 0 else ''}"
+            + f"{data['NightTemperature']}°"
+        )
+        self.l_sunrise.setText(f"{data['SunriseTime']}")
+        self.l_sunset.setText(f"{data['SunsetTime']}")
 
     def updateData(self) -> None:
         """Updates data and UI values"""

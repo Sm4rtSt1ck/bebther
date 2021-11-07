@@ -303,7 +303,8 @@ border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
 color: white;
-padding:10px;</string>
+padding:10px;
+border-top-right-radius: 0px;</string>
     </property>
     <property name="text">
      <string>Hometown</string>
@@ -335,7 +336,8 @@ border: 1px solid;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
 color: white;
-padding:10px;</string>
+padding:10px;
+border-top-left-radius: 0px;</string>
     </property>
     <property name="text">
      <string>Theme</string>

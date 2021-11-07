@@ -533,7 +533,7 @@ border-color: rgb(66, 79, 122);
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>AccuWeather</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -1012,7 +1012,7 @@ border-color: rgb(66, 79, 122);
 border-radius: 15px;</string>
     </property>
     <property name="text">
-     <string>OpenWeatherMap</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -1032,6 +1032,90 @@ border-radius: 15px;</string>
     </property>
     <property name="pixmap">
      <pixmap>images/sunset.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="parserBox">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>65</y>
+      <width>215</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+border-radius: 20px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border: 1px solid white;
+border-color: rgb(66, 79, 122);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(200, 200, 255);
+}
+QComboBox::drop-down 
+{
+	border: 0px solid;
+}
+QComboBox QAbstractItemView {
+  color: rgb(200, 200, 255);	
+  background-color: rgb(66, 79, 122);
+  border-radius: 5px;
+  padding: 10px;
+  selection-background-color: rgba(255, 255, 255, 10);
+}</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="parserBox_2">
+    <property name="geometry">
+     <rect>
+      <x>566</x>
+      <y>65</y>
+      <width>215</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiLight</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+border-radius: 20px;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border: 1px solid white;
+border-color: rgb(66, 79, 122);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(200, 200, 255);
+}
+QComboBox::drop-down 
+{
+	border: 0px solid;
+}
+QComboBox QAbstractItemView {
+  color: rgb(200, 200, 255);	
+  background-color: rgb(66, 79, 122);
+  border-radius: 5px;
+  padding: 10px;
+  selection-background-color: rgba(255, 255, 255, 10);
+}</string>
+    </property>
+    <property name="currentText">
+     <string/>
     </property>
    </widget>
    <zorder>background</zorder>
@@ -1070,6 +1154,8 @@ border-radius: 15px;</string>
    <zorder>l_sunrise_icon_2</zorder>
    <zorder>l_night_temp_2</zorder>
    <zorder>l_sunset_icon_2</zorder>
+   <zorder>parserBox</zorder>
+   <zorder>parserBox_2</zorder>
   </widget>
  </widget>
  <resources>

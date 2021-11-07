@@ -623,7 +623,8 @@ border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
 color: rgb(255, 255, 255);
-padding:10px;</string>
+padding:10px;
+border-top-left-radius: 0px;</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -711,7 +712,7 @@ padding:8px;</string>
    <widget class="QLabel" name="l_reload_icon">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>484</x>
       <y>21</y>
       <width>32</width>
       <height>38</height>
@@ -750,6 +751,7 @@ border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
 color: rgb(255, 255, 255);
 padding:10px;
+border-top-right-radius: 0px;
 }
 QComboBox::drop-down 
 {

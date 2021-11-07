@@ -164,11 +164,11 @@ class Windows(QMainWindow):
         """Updating weather data"""
         if data is None:
             return None
+        # Filling parsed data into UI labels
         self.l_temp.setText(
             f"{'+' if data['Temperature'] > 0 else ''}"
             + f"{data['Temperature']}°"
         )
-        # Filling parsed data into UI labels
         self.l_humidity.setText(f"{data['Humidity']}%")
         self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
         self.l_pressure.setText(f"{data['Pressure']}")
@@ -372,6 +372,10 @@ class Windows(QMainWindow):
         if data is None:
             return False
         # Filling parsed data into UI labels
+        self.l_temp.setText(
+            f"{'+' if data['Temperature'] > 0 else ''}"
+            + f"{data['Temperature']}°"
+        )
         self.l_humidity.setText(f"{data['Humidity']}%")
         self.l_wind_speed.setText(f"{data['WindSpeed']} m/s")
         self.l_pressure.setText(f"{data['Pressure']}")
@@ -395,6 +399,10 @@ class Windows(QMainWindow):
         if data is None:
             return False
         # Filling parsed data into UI labels
+        self.l_temp_2.setText(
+            f"{'+' if data['Temperature'] > 0 else ''}"
+            + f"{data['Temperature']}°"
+        )
         self.l_humidity_2.setText(f"{data['Humidity']}%")
         self.l_wind_speed_2.setText(f"{data['WindSpeed']} m/s")
         self.l_pressure_2.setText(f"{data['Pressure']}")

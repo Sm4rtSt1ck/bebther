@@ -1,18 +1,17 @@
 import sys
 import datetime
-from os import walk
 import pathlib
 import datetime
 import database
 import json
 import asyncio
+from os import walk
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-isDebug = True
 # References if the debug mode is enabled.
-# Controls some behavior such as debug-outputs
+isDebug = True  # Controls some behavior such as debug-outputs
 currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers
 # Location of this file
@@ -21,10 +20,14 @@ directory = pathlib.Path(__file__).parent.resolve()
 windows = {  # Windows
     "dark": {  # Dark windows
         "main": f"{directory}\\ui\\main.ui",
-        "settings": f"{directory}\\ui\\settings.ui"},
+        "settings": f"{directory}\\ui\\settings.ui",
+        "compare_days": f"{directory}\\ui\\compare_days.ui",
+        "compare_sources": f"{directory}\\ui\\compare_sources.ui"},
     "light": {  # Light windows
         "main": f"{directory}\\ui\\main_light.ui",
-        "settings": f"{directory}\\ui\\settings_light.ui"}}
+        "settings": f"{directory}\\ui\\settings_light.ui",
+        "compare_days": f"{directory}\\ui\\compare_days_light.ui",
+        "compare_sources": f"{directory}\\ui\\compare_sources_light.ui"}}
 # Default theme
 theme = windows["dark"]
 # Autorun
@@ -81,7 +84,8 @@ class Windows(QMainWindow):
         """Read settings from the JSON file"""
         try:
             # Opening the file and parsing JSON
-            data = json.loads(open("settings.json", "r").readline())
+            data = json.loads(open(
+                f"{directory}\\settings.json", "r").readline())
             global defaultCity, theme, isAutorun
             # Applying to variables
             defaultCity = data["defaultCity"]
@@ -110,7 +114,7 @@ class Windows(QMainWindow):
         """Updating list of available parsers"""
         files = list()
         # Getting all files present in the ./Parsers/ folder
-        for(dirpath, dirname, filenames) in walk("./Parsers/"):
+        for(dirpath, dirname, filenames) in walk(f"{directory}/Parsers/"):
             files.append(filenames)
             break
         debug(files)
@@ -171,7 +175,7 @@ class Windows(QMainWindow):
             self.l_sunset.setText(f"{data['SunsetTime']}")
 
     def updateData(self) -> None:
-        """Update data and UI values"""
+        """Updates data and UI values"""
         data = self.getData()
         if data is not None:
             self.updateUI(data)
@@ -199,7 +203,8 @@ class Windows(QMainWindow):
 
     # Main window
     def init_main(self):
-        """Loads gui of main window and connects buttons to functions"""
+        """Loads gui of main window,
+        defines functions and connects buttons to thems"""
         uic.loadUi(theme["main"], self)
         global last_data
         self.updateParsersUI()  # Updating parsers list in UI
@@ -246,7 +251,7 @@ class Windows(QMainWindow):
             draw.text(
                 (150, 40), str(last_data["Humidity"]) + "%", font=font,
                 fill=textColor)
-            # Barometer
+            # Air pressure
             background.paste(barometer, (20, 175), barometer)
             draw.text(
                 (150, 195), str(last_data["Pressure"]), font=font,
@@ -313,16 +318,20 @@ class Windows(QMainWindow):
             background.close()
 
         def buttons():
+            """Connects buttons to functions"""
             self.cityNameField.setPlainText(currentCity)
             self.cityNameField.textChanged.connect(self.updateCityName)
             self.setting_button.clicked.connect(self.init_settings)
             self.reload_button.clicked.connect(self.updateData)
             self.setting_button.clicked.connect(self.init_settings)
+            self.compare_days_button.clicked.connect(self.init_compare_days)
+            self.compare_sources_button.clicked.connect(
+                self.init_compare_sources)
             self.share_button.clicked.connect(share)
         buttons()
 
     def changeHometown(self):
-        """Change local entry of default city and save settings"""
+        """Changes local entry of default city and save settings"""
         global defaultCity
         defaultCity = self.hometownField.toPlainText()
 
@@ -340,16 +349,19 @@ class Windows(QMainWindow):
         uic.loadUi(theme["settings"], self)
 
         def changeTheme():
+            """Changes theme"""
             def light():
                 """Switches theme to light"""
                 global theme
                 theme = windows["light"]
+                # Reloads current window
                 uic.loadUi(theme["settings"], self)
 
             def dark():
                 """Switches theme to dark"""
                 global theme
                 theme = windows["dark"]
+                # Reloads current window
                 uic.loadUi(theme["settings"], self)
 
             light() if self.theme_light.isChecked() else dark()
@@ -425,6 +437,17 @@ class Windows(QMainWindow):
             self.autorun_on.setChecked(isAutorun)
             self.autorun_off.setChecked(False if isAutorun else True)
         buttons()
+
+    def init_compare_days(self):
+        uic.loadUi(theme["compare_days"], self)
+
+        self.main_button.clicked.connect(self.init_main)
+
+    def init_compare_sources(self):
+        uic.loadUi(theme["compare_sources"], self)
+
+        self.main_button.clicked.connect(self.init_main)
+
 
 # Program's entry point
 # Creating application and window instances

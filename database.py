@@ -1,6 +1,7 @@
 import sqlite3
 from main import debug
 import datetime
+import pathlib
 
 db = sqlite3.Connection
 
@@ -10,7 +11,8 @@ def start() -> None:
     global db
     # Trying to connect to the database
     try:
-        db = sqlite3.connect("./Database/weather.db")
+        db = sqlite3.connect(
+            f"{pathlib.Path(__file__).parent.resolve()}/Database/weather.db")
         debug(f"Database opened")
     except Exception as e:
         debug(f"Exception on opening database: {e}")

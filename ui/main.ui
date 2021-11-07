@@ -41,8 +41,8 @@
    <widget class="QPushButton" name="setting_button">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>10</y>
+      <x>434</x>
+      <y>19</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -632,8 +632,8 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="reload_button">
     <property name="geometry">
      <rect>
-      <x>452</x>
-      <y>10</y>
+      <x>476</x>
+      <y>19</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -661,11 +661,11 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_12">
+   <widget class="QLabel" name="l_reload_icon">
     <property name="geometry">
      <rect>
-      <x>456</x>
-      <y>12</y>
+      <x>480</x>
+      <y>21</y>
       <width>32</width>
       <height>38</height>
      </rect>
@@ -803,6 +803,54 @@ border-radius: 15px;</string>
      <string>Compare sources</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="save_button">
+    <property name="geometry">
+     <rect>
+      <x>359</x>
+      <y>16</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+border-color: rgba(50, 50, 150, 100);
+background-color: none;
+color: rgb(200, 200, 255);
+font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="l_save_icon">
+    <property name="geometry">
+     <rect>
+      <x>397</x>
+      <y>20</y>
+      <width>38</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/save.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
    <zorder>label_14</zorder>
    <zorder>setting_button</zorder>
    <zorder>l_sunrise</zorder>
@@ -824,13 +872,15 @@ border-radius: 15px;</string>
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
    <zorder>cityNameField</zorder>
-   <zorder>label_12</zorder>
+   <zorder>l_reload_icon</zorder>
    <zorder>reload_button</zorder>
    <zorder>parserBox</zorder>
    <zorder>l_share_icon</zorder>
    <zorder>share_button</zorder>
    <zorder>compare_days_button</zorder>
    <zorder>compare_sources_button</zorder>
+   <zorder>save_button</zorder>
+   <zorder>l_save_icon</zorder>
   </widget>
  </widget>
  <resources>

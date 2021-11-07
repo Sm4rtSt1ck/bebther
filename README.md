@@ -56,6 +56,8 @@ Feel free to share your parser in any possible way
 ![Sunset icon](ui/images/sunset.png) [Sunset](https://www.flaticon.com/free-icon/sunset_287668) by **Nikita Golubev**  
 ![Ultraviolet icon](ui/images/ultraviolet.png) [Ultraviolet](https://www.flaticon.com/premium-icon/ultraviolet_3512031) by **Freepik**  
 ![Wind icon](ui/images/wind.png) [Wind](https://www.flaticon.com/premium-icon/wind_2057945) by **Freepik**  
+![Diskette icon](ui/images/save.png) [Diskette](https://www.flaticon.com/premium-icon/diskette_2874091) by **Yogi Aprelliyanto**  
+![Reset icon](ui/images/reload.png) [Reset](https://www.flaticon.com/premium-icon/reset_2618245) by **inkubators**  
 Thanks to all creators listed above for their work and letting us use their materials free of charge
 
 ## Authors

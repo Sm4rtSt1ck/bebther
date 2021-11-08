@@ -305,7 +305,7 @@ class Windows(QMainWindow):
 
                 # Setting key value
                 winreg.SetValueEx(
-                    key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.bat")
+                    key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.lnk")
                 # Closing the registry
                 winreg.CloseKey(key)
                 isAutorun = True

@@ -881,8 +881,8 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
    <zorder>share_button</zorder>
    <zorder>compare_days_button</zorder>
    <zorder>compare_sources_button</zorder>
-   <zorder>save_button</zorder>
    <zorder>l_save_icon</zorder>
+   <zorder>save_button</zorder>
   </widget>
  </widget>
  <resources/>

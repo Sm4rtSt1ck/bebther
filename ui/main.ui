@@ -808,8 +808,8 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="save_button">
     <property name="geometry">
      <rect>
-      <x>359</x>
-      <y>16</y>
+      <x>390</x>
+      <y>20</y>
       <width>41</width>
       <height>41</height>
      </rect>

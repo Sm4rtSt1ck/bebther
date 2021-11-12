@@ -15,6 +15,8 @@
 * Autorun not working on Python 2:
   > Python's system alias is `python` for Python 3 and `py` for Python 2, so the batch file tries to run non-existent for Win7 `python` comandlet.
 * UI freezing upon parsing data
+* AccuWeather parser failing to parse data
+  > AccuWeather's API has a 60 requests per day limit, so it doesn't return anything when the limit is exceeded
   
 ## Installing a new parser
 The Bebther application has a unique modular system allowing users to install or create their own parsers.

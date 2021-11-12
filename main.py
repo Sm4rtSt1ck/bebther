@@ -48,7 +48,7 @@ class Windows(QMainWindow):
         database.start()
         # Initial setup
         self.readSettings()
-        global currentCity
+        global currentCity, defaultCity
         currentCity = defaultCity
         global parsers
         global currentParser

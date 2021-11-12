@@ -6,7 +6,7 @@ import datetime
 class Worker:
     def output_image(last_data, theme):
         # Opens icons
-        clr = "_black" if theme else ""
+        clr = "_black" if not theme else ""
         images = f"{main.directory}\\ui\\images\\highres"
         humidity = Image.open(
             f"{images}\\drop{clr}.png").resize((100, 100))
@@ -34,7 +34,7 @@ class Worker:
             f"{main.directory}\\ui\\Bahnschrift.ttf", 63)
         draw = ImageDraw.Draw(txt)
         textColor = (
-            200, 200, 200, 255) if theme == main.windows["dark"] else (
+            200, 200, 200, 255) if theme else (
                 0, 0, 0, 200)
         # Humidity
         background.paste(humidity, (20, 20), humidity)

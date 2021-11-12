@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Bahnschrift.ttf">
+    <file>Bahnschrift.ttf</file>
+  </qresource>
+</RCC>

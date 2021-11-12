@@ -17,20 +17,8 @@ currentParser = None  # Contains instance of the selected Parser object
 parsers = list()  # List of all available parsers
 # Location of this file
 directory = pathlib.Path(__file__).parent.resolve()
-# Location of .ui files
-windows = {  # Windows
-    "dark": {  # Dark windows
-        "main": f"{directory}\\ui\\main.ui",
-        "settings": f"{directory}\\ui\\settings.ui",
-        "compare_days": f"{directory}\\ui\\compare_days.ui",
-        "compare_sources": f"{directory}\\ui\\compare_sources.ui"},
-    "light": {  # Light windows
-        "main": f"{directory}\\ui\\main_light.ui",
-        "settings": f"{directory}\\ui\\settings_light.ui",
-        "compare_days": f"{directory}\\ui\\compare_days_light.ui",
-        "compare_sources": f"{directory}\\ui\\compare_sources_light.ui"}}
 # Default theme
-theme = windows["dark"]
+isDarkTheme = True
 # Autorun
 isAutorun = False
 # Current city string
@@ -87,10 +75,10 @@ class Windows(QMainWindow):
             # Opening the file and parsing JSON
             data = json.loads(open(
                 f"{directory}\\settings.json", "r").readline())
-            global defaultCity, theme, isAutorun
+            global defaultCity, isDarkTheme, isAutorun
             # Applying to variables
             defaultCity = data["defaultCity"]
-            theme = data["theme"]
+            isDarkTheme = data["isDarkTheme"]
             isAutorun = data["isAutorun"]
             print(data["defaultCity"])
         except Exception as e:
@@ -99,12 +87,12 @@ class Windows(QMainWindow):
     async def writeSettings(self) -> None:
         """Save settings to the JSON file"""
         try:
-            global defaultCity, theme, isAutorun
+            global defaultCity, isDarkTheme, isAutorun
             sfile = open("settings.json", "w")
             settings = dict()
             # Filling in the dictionary
             settings["defaultCity"] = defaultCity
-            settings["theme"] = theme
+            settings["isDarkTheme"] = isDarkTheme
             settings["isAutorun"] = isAutorun
             # Writing the dumped JSON data to file
             sfile.write(json.dumps(settings))
@@ -217,11 +205,20 @@ class Windows(QMainWindow):
             debug(f"Couldn't write to the database: {e}")
             dialogs.DBFailDialog().exec()
 
+    def getUiFile(self, name) -> str:
+        """Returns UI file path depending on color scheme"""
+        global directory, isDarkTheme
+        bs = '\\'
+        return (
+            f"{directory}\\ui\\"
+            + f"{'dark' if isDarkTheme else 'light'}\\{name}.ui"
+        )
+
     # Main window
     def init_main(self) -> None:
         """Loads gui of main window,
         defines functions and connects buttons to thems"""
-        uic.loadUi(theme["main"], self)
+        uic.loadUi(self.getUiFile("main"), self)
         global last_data
         self.updateParsersUI()  # Updating parsers list in UI
         self.parserBox.currentIndexChanged.connect(self.toggleParser)
@@ -229,11 +226,11 @@ class Windows(QMainWindow):
 
         def share() -> None:
             """Opens picture with info about weather"""
-            global last_data
+            global last_data, isDarkTheme
             if last_data is None:
                 dialogs.ShareFailDialog().exec()
                 return
-            images.Worker.output_image(last_data, theme)
+            images.Worker.output_image(last_data, isDarkTheme)
 
         def buttons() -> None:
             """Connects buttons to functions"""
@@ -267,23 +264,23 @@ class Windows(QMainWindow):
     def init_settings(self) -> None:
         """Loads gui of settings window,
         defines functions and connects buttons to them"""
-        uic.loadUi(theme["settings"], self)
+        uic.loadUi(self.getUiFile("settings"), self)
 
         def changeTheme() -> None:
             """Changes theme"""
             def light() -> None:
                 """Switches theme to light"""
-                global theme
-                theme = windows["light"]
+                global isDarkTheme
+                isDarkTheme = False
                 # Reloads current window
-                uic.loadUi(theme["settings"], self)
+                uic.loadUi(self.getUiFile("settings"), self)
 
             def dark() -> None:
                 """Switches theme to dark"""
-                global theme
-                theme = windows["dark"]
+                global isDarkTheme
+                isDarkTheme = True
                 # Reloads current window
-                uic.loadUi(theme["settings"], self)
+                uic.loadUi(self.getUiFile("Settings"), self)
 
             light() if self.theme_light.isChecked() else dark()
             buttons()
@@ -343,14 +340,14 @@ class Windows(QMainWindow):
 
             # Theme buttons
             self.hometownField.textChanged.connect(self.changeHometown)
-            global defaultCity
+            global defaultCity, isDarkTheme
             self.hometownField.setPlainText(defaultCity)
             self.theme_light.clicked.connect(changeTheme)
             self.theme_dark.clicked.connect(changeTheme)
             self.theme_light.setChecked(
-                True if theme == windows["light"] else False)
+                True if not isDarkTheme else False)
             self.theme_dark.setChecked(
-                True if theme == windows["dark"] else False)
+                True if isDarkTheme else False)
 
             # Autorun buttons
             self.autorun_on.clicked.connect(autorun)
@@ -361,7 +358,7 @@ class Windows(QMainWindow):
 
     def init_compare_days(self) -> None:
         """Initialize the day comparison UI"""
-        uic.loadUi(theme["compare_days"], self)
+        uic.loadUi(self.getUiFile("compare_days"), self)
 
         self.main_button.clicked.connect(self.init_main)
 
@@ -445,7 +442,7 @@ class Windows(QMainWindow):
 
     def init_compare_sources(self) -> None:
         """Initialize the source comparison UI"""
-        uic.loadUi(theme["compare_sources"], self)
+        uic.loadUi(self.getUiFile("compare_sources"), self)
         # Adding parsers list to QComboBoxes
         self.updateOneParserUI(self.parserBox)
         self.updateOneParserUI(self.parserBox_2)

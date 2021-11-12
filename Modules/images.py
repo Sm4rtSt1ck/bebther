@@ -6,7 +6,7 @@ import datetime
 class Worker:
     def output_image(last_data, theme):
         # Opens icons
-        clr = "_black" if theme == main.windows["light"] else ""
+        clr = "_black" if theme else ""
         images = f"{main.directory}\\ui\\images\\highres"
         humidity = Image.open(
             f"{images}\\drop{clr}.png").resize((100, 100))
@@ -27,7 +27,7 @@ class Worker:
         # Opens background
         background = Image.open(
             f"{main.directory}\\ui\\images\\"
-            + f"{'' if theme == main.windows['dark'] else 'light/'}"
+            + f"{'' if theme else 'light/'}"
             + "share_background.jpeg").convert("RGBA")
         txt = Image.new("RGBA", background.size, (255, 255, 255, 0))
         font = ImageFont.truetype(

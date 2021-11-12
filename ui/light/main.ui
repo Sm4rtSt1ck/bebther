@@ -58,26 +58,22 @@
      <font>
       <family>Comic Sans MS</family>
       <pointsize>15</pointsize>
-      <weight>9</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Settings</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(255, 255, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;
+     <string notr="true">color: rgb(255, 255, 255);
 border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
-color: rgb(255, 255, 255);
-padding:8px;</string>
+padding:8px;
+QToolTip { color: #ffffff; background-color: #000000; border: 0px; }</string>
     </property>
     <property name="text">
      <string>⚙</string>
@@ -621,6 +617,9 @@ padding:8px;</string>
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Enter city</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border: 1px solid white;
@@ -688,26 +687,24 @@ padding:10px;</string>
      <font>
       <family>Comic Sans MS</family>
       <pointsize>15</pointsize>
-      <weight>9</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Update weather data</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(255, 255, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;
-border-radius: 20px;
+     <string notr="true">border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
 color: rgb(255, 255, 255);
-padding:8px;</string>
+padding:8px;
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -746,6 +743,9 @@ padding:8px;</string>
       <family>Bahnschrift SemiLight</family>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Choose data source</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QComboBox
@@ -803,6 +803,9 @@ QComboBox QAbstractItemView {
       <width>51</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Share</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
@@ -874,13 +877,11 @@ padding:10px;</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Save to data base</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(255, 255, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;
-border-radius: 20px;
+     <string notr="true">border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);
@@ -932,21 +933,16 @@ padding:8px;</string>
      <font>
       <family>Comic Sans MS</family>
       <pointsize>15</pointsize>
-      <weight>9</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Update parsers list</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(255, 255, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;
-border-radius: 20px;
+     <string notr="true">border-radius: 20px;
 border: 1px solid white;
 border-color: rgba(255, 255, 255, 50);
 background-color: rgba(0, 0, 0, 20);

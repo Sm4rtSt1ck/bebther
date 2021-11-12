@@ -261,7 +261,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Back&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
@@ -403,9 +403,9 @@ padding:10px;</string>
    <widget class="QLabel" name="devname_5">
     <property name="geometry">
      <rect>
-      <x>2</x>
+      <x>-1</x>
       <y>220</y>
-      <width>898</width>
+      <width>901</width>
       <height>180</height>
      </rect>
     </property>
@@ -440,6 +440,9 @@ padding:10px;</string>
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Enter city</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color: rgb(200, 200, 255);
@@ -466,11 +469,11 @@ border-radius: 15px;</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="autorun"/>
   <buttongroup name="theme">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-  <buttongroup name="autorun"/>
  </buttongroups>
 </ui>

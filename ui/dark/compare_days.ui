@@ -641,6 +641,9 @@ border-radius: 15px;</string>
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Back&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
 border-color: rgb(66, 79, 122);

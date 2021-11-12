@@ -55,20 +55,22 @@
      <font>
       <family>Comic Sans MS</family>
       <pointsize>15</pointsize>
-      <weight>9</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Settings&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 15px;
 border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(200, 200, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+color: rgb(255, 255, 255);
+QToolTip{
+    background-color: black;
+	color: black;
+}</string>
     </property>
     <property name="text">
      <string>⚙</string>
@@ -612,14 +614,20 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Enter city</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 color: rgb(200, 200, 255);
 padding: 10px;
 border: 1px solid white;
 border-color: rgb(66, 79, 122);
 border-radius: 15px;
-border-top-left-radius: 0px;</string>
+border-top-left-radius: 0px;
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -643,24 +651,14 @@ border-top-left-radius: 0px;</string>
       <height>40</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>15</pointsize>
-      <weight>9</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Update weather data</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(200, 200, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -697,6 +695,9 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Choose data source</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QComboBox
 {
@@ -717,6 +718,9 @@ QComboBox QAbstractItemView {
   border-radius: 5px;
   padding: 10px;
   selection-background-color: rgba(255, 255, 255, 10);
+}
+QToolTip{
+    background-color: white;
 }</string>
     </property>
     <property name="currentText">
@@ -748,8 +752,14 @@ QComboBox QAbstractItemView {
       <height>41</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Share</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -818,12 +828,14 @@ border-radius: 15px;</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Save to data base</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(200, 200, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -886,20 +898,19 @@ font: 75 15pt &quot;Comic Sans MS&quot;;</string>
      <font>
       <family>Comic Sans MS</family>
       <pointsize>15</pointsize>
-      <weight>9</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Update parsers list</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 15px;
-border-color: rgba(50, 50, 150, 100);
-background-color: none;
-color: rgb(200, 200, 255);
-font: 75 15pt &quot;Comic Sans MS&quot;;</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+QToolTip{
+    background-color: white;
+}</string>
     </property>
     <property name="text">
      <string/>

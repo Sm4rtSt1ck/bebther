@@ -103,7 +103,7 @@ padding:10px;</string>
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select City&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Back&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;
@@ -262,10 +262,10 @@ text-align: right;</string>
    <widget class="QLabel" name="devname_8">
     <property name="geometry">
      <rect>
-      <x>3</x>
+      <x>0</x>
       <y>221</y>
-      <width>898</width>
-      <height>180</height>
+      <width>901</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="font">
@@ -436,6 +436,9 @@ border-top-left-radius: 0px;</string>
       <family>Bahnschrift SemiLight</family>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Enter city</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius: 20px;

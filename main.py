@@ -284,7 +284,9 @@ class Windows(QMainWindow):
 
             light() if self.theme_light.isChecked() else dark()
             buttons()
-            self.writeSettings()
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            loop.run_until_complete(self.writeSettings())
 
         def autorun() -> None:
             def on() -> None:
@@ -331,7 +333,9 @@ class Windows(QMainWindow):
                     pass
 
             on() if self.autorun_on.isChecked() else off()
-            self.writeSettings()
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            loop.run_until_complete(self.writeSettings())
 
         def buttons() -> None:
             """Connects buttons to functions"""

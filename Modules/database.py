@@ -99,6 +99,11 @@ def read(date: datetime.date) -> dict:
         # Getting the database row
         cur.execute(f"""SELECT * from Weather WHERE Date = date('{date}')""")
         result = cur.fetchone()  # Parsing the row into the dict
+        result = dict(result)
+        result["SunriseTime"] = datetime.time.fromisoformat(
+            result["SunriseTime"]).strftime('%H:%M')
+        result["SunsetTime"] = datetime.time.fromisoformat(
+            result["SunsetTime"]).strftime('%H:%M')
         return result
     except Exception as e:
         debug(f"Couldn't read database data: {e}")

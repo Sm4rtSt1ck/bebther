@@ -32,7 +32,11 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Bebther - Compare Days</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/icon.png</normaloff>images/icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -1601,8 +1605,6 @@ padding:10px;</string>
    <zorder>l_night_temp_3</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="bebr.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

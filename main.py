@@ -6,6 +6,7 @@ import Modules.database as database
 import json
 import asyncio
 from os import walk
+import os
 import Modules.images as images
 import Modules.dialogs as dialogs
 
@@ -73,6 +74,7 @@ class Windows(QMainWindow):
         """Read settings from the JSON file"""
         try:
             # Opening the file and parsing JSON
+            os.chdir(f"{directory}\\")
             data = json.loads(open(
                 f"{directory}\\settings.json", "r").readline())
             global defaultCity, isDarkTheme, isAutorun
@@ -307,7 +309,7 @@ class Windows(QMainWindow):
 
                 # Setting key value
                 winreg.SetValueEx(
-                    key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.lnk")
+                    key, "Bebther", 0, winreg.REG_SZ, f"{directory}\\run.bat")
                 # Closing the registry
                 winreg.CloseKey(key)
                 isAutorun = True

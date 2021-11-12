@@ -13,8 +13,8 @@ def start() -> None:
     # Trying to connect to the database
     try:
         path = (f"{pathlib.Path(__file__).parent.resolve().parent}"
-                + "\\Database\\"
-                )
+                + "\\Database\\")
+        os.chdir(f"{path}\\")
         os.makedirs(path)
     except Exception as e:
         debug(f"Error on creating ./Database/ {e}")

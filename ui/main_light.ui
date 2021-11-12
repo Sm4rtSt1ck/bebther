@@ -919,6 +919,63 @@ padding:8px;</string>
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="update_parser_button">
+    <property name="geometry">
+     <rect>
+      <x>632</x>
+      <y>18</y>
+      <width>40</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Settings&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+border-color: rgba(50, 50, 150, 100);
+background-color: none;
+color: rgb(255, 255, 255);
+font: 75 15pt &quot;Comic Sans MS&quot;;
+border-radius: 20px;
+border: 1px solid white;
+border-color: rgba(255, 255, 255, 50);
+background-color: rgba(0, 0, 0, 20);
+color: rgb(255, 255, 255);
+padding:8px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="l_update_parser_icon">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>32</width>
+      <height>38</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/reload.png</pixmap>
+    </property>
+   </widget>
    <zorder>label_14</zorder>
    <zorder>filler</zorder>
    <zorder>setting_button</zorder>
@@ -950,6 +1007,8 @@ padding:8px;</string>
    <zorder>compare_sources_button</zorder>
    <zorder>l_save_icon</zorder>
    <zorder>save_button</zorder>
+   <zorder>l_update_parser_icon</zorder>
+   <zorder>update_parser_button</zorder>
   </widget>
  </widget>
  <resources/>

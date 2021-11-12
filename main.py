@@ -247,6 +247,7 @@ class Windows(QMainWindow):
                 self.init_compare_sources)
             self.save_button.clicked.connect(self.pushToDatabase)
             self.share_button.clicked.connect(share)
+            self.update_parser_button.clicked.connect(self.updateParsers)
         buttons()
 
     def changeHometown(self) -> None:

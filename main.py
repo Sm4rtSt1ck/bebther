@@ -23,9 +23,9 @@ isDarkTheme = True
 # Autorun
 isAutorun = False
 # Current city string
-currentCity = "Иркутск"
+currentCity = "London"
 # Default city stored in settings
-defaultCity = "Иркутск"
+defaultCity = "London"
 # Last parsed data
 last_data = None
 
